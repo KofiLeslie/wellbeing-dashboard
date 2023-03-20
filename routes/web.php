@@ -14,5 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard.home');
+});
+
+Route::get('/profile', function () {
+    return view('profile.list');
+});
+
+Route::get('/feedback', function () {
+    return view('feedback.list');
+});
+
+Route::get('/book', function () {
+    return view('book.list');
+});
+
+Route::get('/assess/mental', function () {
+    return view('assess.mental');
 });
