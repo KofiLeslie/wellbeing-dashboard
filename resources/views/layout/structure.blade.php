@@ -342,7 +342,7 @@
                 <div class="menu-title">ASSESSMENT</div>
               </a>
               <ul>
-                <li> <a href="{{ url('/assess/phycical') }}"><i class="bi bi-circle"></i>PHYSICAL HEALTH</a>
+                <li> <a href="{{ url('/assess/physical') }}"><i class="bi bi-circle"></i>PHYSICAL HEALTH</a>
                 </li>
                 <li> <a href="{{ url('/assess/mental') }}"><i class="bi bi-circle"></i>MENTAL HEALTH</a>
                 </li>
@@ -363,13 +363,13 @@
                 <div class="menu-title">CHECK EVALUATION</div>
               </a>
               <ul>
-                <li> <a href="javascript:;"><i class="bi bi-circle"></i>PHYSICAL HEALTH</a>
+                <li> <a href="{{ url('/evaluate/physical') }}"><i class="bi bi-circle"></i>PHYSICAL HEALTH</a>
                 </li>
-                <li> <a href="javascript:;"><i class="bi bi-circle"></i>MENTAL HEALTH</a>
+                <li> <a href="{{ url('/evaluate/mental') }}"><i class="bi bi-circle"></i>MENTAL HEALTH</a>
                 </li>
-                <li> <a href="javascript:;"><i class="bi bi-circle"></i>EMOTIONAL HEALTH</a>
+                <li> <a href="{{ url('/evaluate/emotional') }}"><i class="bi bi-circle"></i>EMOTIONAL HEALTH</a>
                 </li>
-                <li> <a href="javascript:;"><i class="bi bi-circle"></i>SOCIAL WELLBEING</a>
+                <li> <a href="{{ url('/evaluate/social') }}"><i class="bi bi-circle"></i>SOCIAL WELLBEING</a>
                 </li>
               </ul>
             </li>

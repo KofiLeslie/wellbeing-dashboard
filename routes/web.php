@@ -32,3 +32,32 @@ Route::get('/book', function () {
 Route::get('/assess/mental', function () {
     return view('assess.mental');
 });
+
+Route::get('/assess/physical', function () {
+    return view('assess.physical');
+});
+
+Route::get('/assess/emotional', function () {
+    return view('assess.emotional');
+});
+
+Route::get('/assess/social', function () {
+    return view('assess.social');
+});
+
+//
+Route::get('/evaluate/mental', function () {
+    return view('evaluate.mental');
+});
+
+Route::get('/evaluate/physical', function () {
+    return view('evaluate.physical');
+});
+
+Route::get('/evaluate/emotional', function () {
+    return view('evaluate.emotional');
+});
+
+Route::get('/evaluate/social', function () {
+    return view('evaluate.social');
+});

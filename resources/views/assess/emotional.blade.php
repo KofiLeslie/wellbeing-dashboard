@@ -9,7 +9,7 @@
     @csrf
     <div class="row">
         <div class="col-xl-12 mx-auto">
-            <h6 class="mb-0 text-uppercase">Mental Health Assessment</h6>
+            <h6 class="mb-0 text-uppercase">Emotional Health Assessment</h6>
             <hr />
             <div class="card">
                 <div class="card-body">
