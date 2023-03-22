@@ -284,7 +284,7 @@
                     </li>
                     <li><hr class="dropdown-divider"></li>
                     <li>
-                      <a class="dropdown-item" href="javascript:;">
+                      <a class="dropdown-item" href="{{ url('/') }}">
                          <div class="d-flex align-items-center">
                            <div class=""><i class="bi bi-lock-fill"></i></div>
                            <div class="ms-3"><span>Logout</span></div>
@@ -320,7 +320,7 @@
                 <div class="menu-title">Dashboard</div>
               </a>
               <ul>
-                <li> <a href="{{ url('/') }}"><i class="bi bi-circle"></i>Home</a>
+                <li> <a href="{{ url('/home') }}"><i class="bi bi-circle"></i>Home</a>
                 </li>
               </ul>
             </li>
@@ -329,47 +329,47 @@
                 <a href="{{ asset('/book') }}">
                     <div class="parent-icon"><i class="bi bi-calendar-date-fill"></i>
                     </div>
-                    <div class="menu-title">BOOK SESSION</div>
+                    <div class="menu-title">Book Session</div>
                 </a>
             </li>
 
-            <li class="menu-label">TAKE AN ASSESSMENT</li>
+            <li class="menu-label">Take An Assessment</li>
 
             <li>
               <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bi bi-clipboard2-pulse-fill"></i>
                 </div>
-                <div class="menu-title">ASSESSMENT</div>
+                <div class="menu-title">Assessment</div>
               </a>
               <ul>
-                <li> <a href="{{ url('/assess/physical') }}"><i class="bi bi-circle"></i>PHYSICAL HEALTH</a>
+                <li> <a href="{{ url('/assess/physical') }}"><i class="bi bi-circle"></i>Physical Health</a>
                 </li>
-                <li> <a href="{{ url('/assess/mental') }}"><i class="bi bi-circle"></i>MENTAL HEALTH</a>
+                <li> <a href="{{ url('/assess/mental') }}"><i class="bi bi-circle"></i>Mental Health</a>
                 </li>
-                <li> <a href="{{ url('/assess/emotional') }}"><i class="bi bi-circle"></i>EMOTIONAL HEALTH</a>
+                <li> <a href="{{ url('/assess/emotional') }}"><i class="bi bi-circle"></i>Emotional Health</a>
                 </li>
-                <li> <a href="{{ url('/assess/social') }}"><i class="bi bi-circle"></i>SOCIAL WELLBEING</a>
+                <li> <a href="{{ url('/assess/social') }}"><i class="bi bi-circle"></i>Social Wellbeing</a>
                 </li>
               </ul>
             </li>
 
             {{-- EVALUATION --}}
-            <li class="menu-label">EVALUATE YOUR PROGRESS</li>
+            <li class="menu-label">Evaluate Your Progress</li>
 
             <li>
               <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bi bi-check-square-fill"></i>
                 </div>
-                <div class="menu-title">CHECK EVALUATION</div>
+                <div class="menu-title">Check Evaluation</div>
               </a>
               <ul>
-                <li> <a href="{{ url('/evaluate/physical') }}"><i class="bi bi-circle"></i>PHYSICAL HEALTH</a>
+                <li> <a href="{{ url('/evaluate/physical') }}"><i class="bi bi-circle"></i>Physical Health</a>
                 </li>
-                <li> <a href="{{ url('/evaluate/mental') }}"><i class="bi bi-circle"></i>MENTAL HEALTH</a>
+                <li> <a href="{{ url('/evaluate/mental') }}"><i class="bi bi-circle"></i>Mental Health</a>
                 </li>
-                <li> <a href="{{ url('/evaluate/emotional') }}"><i class="bi bi-circle"></i>EMOTIONAL HEALTH</a>
+                <li> <a href="{{ url('/evaluate/emotional') }}"><i class="bi bi-circle"></i>Emotional Health</a>
                 </li>
-                <li> <a href="{{ url('/evaluate/social') }}"><i class="bi bi-circle"></i>SOCIAL WELLBEING</a>
+                <li> <a href="{{ url('/evaluate/social') }}"><i class="bi bi-circle"></i>Social Wellbeing</a>
                 </li>
               </ul>
             </li>
@@ -379,7 +379,7 @@
                 <a href="{{ url('/feedback') }}">
                     <div class="parent-icon"><i class="bi bi-chat-quote-fill"></i>
                     </div>
-                    <div class="menu-title">FEEDBACK</div>
+                    <div class="menu-title">Feedback</div>
                 </a>
             </li>
           </ul>

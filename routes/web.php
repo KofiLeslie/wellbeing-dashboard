@@ -14,6 +14,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('landing.login');
+});
+
+Route::get('/register', function () {
+    return view('landing.register');
+});
+
+Route::get('/forgot-password', function () {
+    return view('landing.forgot');
+});
+
+Route::get('/reset-password', function () {
+    return view('landing.reset-password');
+});
+
+Route::get('/home', function () {
     return view('dashboard.home');
 });
 
