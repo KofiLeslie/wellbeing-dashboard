@@ -25,7 +25,7 @@
              <div class="d-flex align-items-center">
                <div class="">
                  <p class="mb-1">Total Income</p>
-                 <h4 class="mb-0">$9,786</h4>
+                 <h4 class="mb-0">GHS 9,786</h4>
                  <p class="mb-0 mt-2 font-13"><i class="bi bi-arrow-up"></i><span>13.2% from last week</span></p>
                </div>
                <div class="ms-auto widget-icon bg-success text-white">
@@ -89,12 +89,12 @@
               </div>
              <div class="d-flex align-items-center gap-3">
                <div class="">
-                 <h4 class="text-success mb-0">$9,279</h4>
+                 <h4 class="text-success mb-0">GHS 9,279</h4>
                  <p class="mb-0">Revenue</p>
                </div>
                <div class="vr"></div>
                <div class="">
-                 <h4 class="text-pink mb-0">$5,629</h4>
+                 <h4 class="text-pink mb-0">GHS 5,629</h4>
                  <p class="mb-0">Investment</p>
                </div>
              </div>
