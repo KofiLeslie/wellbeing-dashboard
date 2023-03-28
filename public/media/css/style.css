@@ -7,7 +7,7 @@ File: style.css
 */
 
 
-/* 
+/*
 - General
 - Header
 - Sidebar
@@ -105,7 +105,7 @@ a {
     opacity: 0.5;
     cursor: pointer;
 	display: none;
- 
+
  }
 
 .top-header .navbar .searchbar .form-control {
@@ -133,7 +133,7 @@ a {
 
 .top-header .navbar .searchbar .search-icon,
 .top-header .navbar .dropdown-searchbar .search-icon {
-  
+
     opacity: 0.5;
 
 }
@@ -278,7 +278,7 @@ a {
 }
 
 .top-header .navbar .dropdown-item .setting-text {
-   
+
     font-size: 16px;
     font-weight: 500;
 }
@@ -367,7 +367,7 @@ a {
 
 
 .top-header .navbar .nav-link .notify-badge {
-      
+
     position: absolute;
     top: -8px;
     right: -8px;
@@ -426,13 +426,13 @@ a {
     margin-left: 10px;
     margin-bottom: 0;
     letter-spacing: 1px;
-    color: #3461ff;
+    color: #940109;
 }
 
 .toggle-icon {
     font-size: 26px;
     cursor: pointer;
-    color: #3461ff;
+    color: #940109;
 }
 
 
@@ -534,10 +534,10 @@ a {
 .sidebar-wrapper .metismenu a:active,
 .sidebar-wrapper .metismenu a:focus,
 .sidebar-wrapper .metismenu a:hover {
-	color: #3461ff;
+	color: #940109;
 	text-decoration: none;
 	background-color: rgb(255 255 255);
-    border-left: 4px solid #3461ff;
+    border-left: 4px solid #940109;
     box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
 }
 
@@ -589,7 +589,7 @@ a {
 	}
 	.wrapper.toggled:not(.sidebar-hovered) .sidebar-wrapper .metismenu a {
 		justify-content: center;
-		border-left: 0px solid #3461ff;
+		border-left: 0px solid #940109;
 	}
 	.wrapper.toggled:not(.sidebar-hovered) .sidebar-wrapper .metismenu .menu-title {
 		display: none
@@ -692,7 +692,7 @@ a {
 
 .fm-menu .list-group a:hover {
 	background-color: rgb(52 97 255 / 15%);
-	color: #3461ff;
+	color: #940109;
 	transition: all .2s ease-out
 }
 
@@ -729,13 +729,13 @@ a {
 	border-radius: 50%;
 	bottom: 20px;
 	right: 12px;
-	background-color: #0d6efd;
+	background-color: #940109;
 	z-index: 5
 }
 
 .back-to-top:hover {
 	color: #fff;
-	background-color: #000;
+	background-color: #ed5d14;
 	transition: all .5s
 }
 
@@ -925,7 +925,7 @@ a {
 }
 
 .productlist .product-title {
-    
+
     color: rgb(25, 27, 34);
 
 }
@@ -949,7 +949,7 @@ a {
 }
 
 .orderlist .product-title {
-    
+
     color: rgb(25, 27, 34);
 
 }
@@ -973,7 +973,7 @@ a {
 
 
 .iconmenu .ps__rail-x {
-	
+
 	height: 0px;
 }
 
@@ -1581,7 +1581,7 @@ a {
 	background-size: cover;
 	background-attachment: fixed;
   }
-  
+
 
  .bg-reset-password {
 	background-image: url(../images/reset-password.png);
@@ -1589,7 +1589,7 @@ a {
 	background-size: cover;
 	background-attachment: fixed;
   }
-  
+
 
 .authentication-card {
     display: flex;
@@ -1646,14 +1646,14 @@ a {
 
 
   @media screen and (max-width:1024px) {
-      
-    
+
+
     .sidebar-wrapper {
-    
+
         left: -300px;
     }
 
-  
+
     .page-content {
 
         margin-left: 0px;
@@ -1661,7 +1661,7 @@ a {
     }
 
     .top-header .navbar{
-      
+
         left: 0px;
     }
 
@@ -1669,11 +1669,11 @@ a {
 
 
    .wrapper.toggled .sidebar-wrapper{
-    
+
         left: 0px;
     }
 
-    
+
     .wrapper.toggled .page-content {
 
         margin-left: 0px;
@@ -1681,7 +1681,7 @@ a {
     }
 
     .wrapper.toggled .top-header .navbar{
-      
+
         left: 0px;
     }
 
@@ -1705,7 +1705,7 @@ a {
 		position: relative;
 		width: 30%;
 		display: none;
-	 
+
  }
 
 .top-header .navbar .full-searchbar {
@@ -1726,7 +1726,7 @@ a {
     padding: 0 1rem;
     -webkit-animation: .6s cubic-bezier(.25, .8, .25, 1) 0s normal forwards 1 animdropdown;
 	animation: .6s cubic-bezier(.25, .8, .25, 1) 0s normal forwards 1 animdropdown
- 
+
   }
 
 .email-header {
@@ -1757,7 +1757,7 @@ a {
     cursor: move;
     transition: all .3s ease-out
 }
-   
+
 .compose-mail-popup {
     width: auto;
     position: fixed;
@@ -1816,12 +1816,12 @@ a {
 .top-header .navbar .searchbar .search-close-icon {
 
 	display: block;
-	
+
 }
 
 
 
-  
+
 }
 
 

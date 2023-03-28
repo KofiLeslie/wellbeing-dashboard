@@ -1,11 +1,13 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="semi-dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="light-theme">
 
 <head>
-    <title>{{ env("APP_NAME") }}</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="icon" href="{{ asset('media/images/favicon.png') }}" type="image/png" />
   <!--plugins-->
   {{-- <link href="{{ asset('media/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet"/> --}}
@@ -17,12 +19,17 @@
   <link href="{{ asset('media/css/bootstrap-extended.css') }}" rel="stylesheet" />
   <link href="{{ asset('media/css/style.css') }}" rel="stylesheet" />
   <link href="{{ asset('media/css/icons.css') }}" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  {{-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"> --}}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;1,200&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
 
   <!-- loader-->
-	<link href="{{ asset('media/css/pace.min.css') }}" rel="stylesheet" />
+	{{-- <link href="{{ asset('media/css/pace.min.css') }}" rel="stylesheet" /> --}}
 
   <!--Theme Styles-->
   <link href="{{ asset('media/css/dark-theme.css') }}" rel="stylesheet" />
@@ -235,8 +242,8 @@
                        <div class="d-flex align-items-center">
                           <img src="{{ asset('media/images/avatars/no-image.png') }}" alt="" class="rounded-circle" width="54" height="54">
                           <div class="ms-3">
-                            <h6 class="mb-0 dropdown-user-name">Jhon Deo</h6>
-                            <small class="mb-0 dropdown-user-designation text-secondary">HR Manager</small>
+                            <h6 class="mb-0 dropdown-user-name">{{ ucwords(Auth::user()->name) }}</h6>
+                            <small class="mb-0 dropdown-user-designation text-secondary">User</small>
                           </div>
                        </div>
                      </a>
@@ -284,12 +291,15 @@
                     </li>
                     <li><hr class="dropdown-divider"></li>
                     <li>
-                      <a class="dropdown-item" href="{{ url('/') }}">
-                         <div class="d-flex align-items-center">
-                           <div class=""><i class="bi bi-lock-fill"></i></div>
-                           <div class="ms-3"><span>Logout</span></div>
-                         </div>
-                       </a>
+            <a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+                        {{--  --}}
                     </li>
                 </ul>
               </li>
@@ -477,7 +487,7 @@
   <script src="{{ asset('media/plugins/simplebar/js/simplebar.min.js') }}"></script>
   <script src="{{ asset('media/plugins/metismenu/js/metisMenu.min.js') }}"></script>
   <script src="{{ asset('media/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
-  <script src="{{ asset('media/js/pace.min.js') }}"></script>
+  {{-- <script src="{{ asset('media/js/pace.min.js') }}"></script> --}}
   @yield('footerLinks')
   <script src="{{ asset('media/js/app.js') }}"></script>
 

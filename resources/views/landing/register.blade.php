@@ -14,8 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
-  <!-- loader-->
-	<link href="{{ asset('media/css/pace.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('media/plugins/sweetalert2/dist/sweetalert2.min.css') }}">
 
   <title>{{ env("APP_NAME") }}</title>
 </head>
@@ -38,28 +37,35 @@
                   <div class="card-body p-4 p-sm-5">
                     <h5 class="card-title">Sign Up</h5>
                     <p class="card-text mb-4">See your growth and get consulting support!</p>
-                     <form class="form-body">
-
+                     <form class="form-body" id="myform" name="myform">
+                        @csrf
                         <div class="row g-3">
                           <div class="col-12 ">
-                            <label for="inputName" class="form-label">Name</label>
+                            <label for="name" class="form-label">Name</label>
                             <div class="ms-auto position-relative">
                               <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-person-circle"></i></div>
-                              <input type="email" class="form-control radius-30 ps-5" id="inputName" placeholder="Enter Name">
+                              <input type="text" class="form-control radius-30 ps-5" name="name" id="name" placeholder="Enter Name">
                             </div>
                           </div>
                           <div class="col-12">
-                            <label for="inputEmailAddress" class="form-label">Email Address</label>
+                            <label for="email" class="form-label">Email Address</label>
                             <div class="ms-auto position-relative">
                               <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-envelope-fill"></i></div>
-                              <input type="email" class="form-control radius-30 ps-5" id="inputEmailAddress" placeholder="Email">
+                              <input type="email" class="form-control radius-30 ps-5" id="email" name="email" placeholder="Email">
                             </div>
                           </div>
                           <div class="col-12">
-                            <label for="inputChoosePassword" class="form-label">Enter Password</label>
+                            <label for="password" class="form-label">Enter Password</label>
                             <div class="ms-auto position-relative">
                               <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-lock-fill"></i></div>
-                              <input type="password" class="form-control radius-30 ps-5" id="inputChoosePassword" placeholder="Password">
+                              <input type="password" class="form-control radius-30 ps-5" id="password" name="password" placeholder="Password">
+                            </div>
+                          </div>
+                          <div class="col-12">
+                            <label for="confirm_password" class="form-label">Confirm Password</label>
+                            <div class="ms-auto position-relative">
+                              <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-lock-fill"></i></div>
+                              <input type="password" class="form-control radius-30 ps-5" id="confirm_password" name="confirm_password" placeholder="Password">
                             </div>
                           </div>
                           <div class="col-12">
@@ -70,7 +76,7 @@
                           </div>
                           <div class="col-12">
                             <div class="d-grid">
-                              <a class="btn btn-primary radius-30" href="{{ url('/home') }}">Sign Up</a>
+                              <button class="btn btn-primary radius-30" type="button" onclick="register();">Sign Up</button>
                             </div>
                           </div>
                           <div class="col-12">
@@ -102,9 +108,8 @@
 
   <!--plugins-->
   <script src="{{ asset('media/js/jquery.min.js') }}"></script>
-  <script src="{{ asset('media/js/pace.min.js') }}"></script>
-
-
+  <script src="{{ asset('media/js/customjs/auth.js') }}"></script>
+  <script src="{{ asset('media/plugins/sweetalert2/dist/sweetalert2.min.js') }}"></script>
 </body>
 
 </html>

@@ -4,10 +4,12 @@ html.light-theme .sidebar-wrapper .metismenu .mm-active>a,
 html.light-theme .sidebar-wrapper .metismenu a:active,
 html.light-theme .sidebar-wrapper .metismenu a:focus,
 html.light-theme .sidebar-wrapper .metismenu a:hover {
-    color: #3461ff;
+    color: #ffffff;
     text-decoration: none;
-    background-color: rgb(52 97 255 / 10%);
-    border-left: 4px solid #3461ff;
+    background-color: #940109;
+    /* background-color: rgb(52 97 255 / 10%); */
+    border-left: 4px solid #ed5d14;
+    /* border-left: 4px solid #3461ff; */
     box-shadow: none;
 }
 

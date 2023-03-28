@@ -78,7 +78,7 @@
 
   <!--plugins-->
   <script src="{{ asset('media/js/jquery.min.js') }}"></script>
-  <script src="{{ asset('media/js/pace.min.js') }}"></script>
+  {{-- <script src="{{ asset('media/js/pace.min.js') }}"></script> --}}
 
 
 </body>
