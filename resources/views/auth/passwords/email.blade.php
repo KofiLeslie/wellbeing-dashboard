@@ -28,7 +28,7 @@
                         <div class="row g-3 mb-4">
                             <div class="col-md-12">
                                 {{-- <label for="email">{{ __('Email Address') }}</label> --}}
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Enter e-mail">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"  required autofocus placeholder="Enter e-mail">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">

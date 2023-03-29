@@ -54,13 +54,13 @@
                             </label>
                          </div>
                        </div>
-                       {{-- <div class="col-12 text-start">
+                       <div class="col-12 text-start">
                         @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
-                       </div> --}}
+                       </div>
                        <div class="col-12">
                          <div class="d-grid">
                             <button type="submit" class="btn btn-primary radius-30">
