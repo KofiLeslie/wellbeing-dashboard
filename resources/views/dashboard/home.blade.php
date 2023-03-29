@@ -1,14 +1,14 @@
 @extends('layout.structure')
 
 @section('content')
-    <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
+    {{-- <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
         <div class="col">
          <div class="card rounded-4">
            <div class="card-body">
              <div class="d-flex align-items-center">
                <div class="">
                  <p class="mb-1">Total Orders</p>
-                 <h4 class="mb-0">5.8K</h4>
+                 <h4 class="mb-0">0</h4>
                  <p class="mb-0 mt-2 font-13"><i class="bi bi-arrow-up"></i><span>22.5% from last week</span></p>
                </div>
                <div class="ms-auto widget-icon bg-primary text-white">
@@ -68,11 +68,11 @@
          </div>
         </div>
 
-    </div><!--end row-->
+    </div><!--end row--> --}}
 
 
     <div class="row">
-       <div class="col-12 col-lg-8 col-xl-8 d-flex">
+       {{-- <div class="col-12 col-lg-8 col-xl-8 d-flex">
           <div class="card w-100 rounded-4">
             <div class="card-body">
              <div class="d-flex align-items-center mb-3">
@@ -101,7 +101,7 @@
                <div id="chart1"></div>
             </div>
           </div>
-       </div>
+       </div> --}}
        <div class="col-12 col-lg-4 col-xl-4 d-flex">
          <div class="card w-100 rounded-4">
            <div class="card-body">
@@ -129,7 +129,7 @@
 
     </div><!--end row-->
 
-    <div class="row row-cols-1 row-cols-lg-4 radial-charts g-4">
+    {{-- <div class="row row-cols-1 row-cols-lg-4 radial-charts g-4">
       <div class="col">
          <div class="card rounded-4">
            <div class="card-body">
@@ -251,7 +251,7 @@
    </div>
  </div>
 
-</div><!--end row-->
+</div><!--end row--> --}}
 
 @endsection
 
