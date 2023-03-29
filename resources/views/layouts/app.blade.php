@@ -23,8 +23,8 @@
 
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    {{-- <div id="app"> --}}
+        {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -77,12 +77,13 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> --}}
 
-        <main class="py-4">
+        {{-- <main class="py-4"> --}}
+            {{-- <main> --}}
             @yield('content')
-        </main>
-    </div>
+        {{-- </main> --}}
+    {{-- </div> --}}
     <script src="{{ asset('media/js/bootstrap.bundle.min.js') }}"></script>
     <!--plugins-->
     <script src="{{ asset('media/js/jquery.min.js') }}"></script>
