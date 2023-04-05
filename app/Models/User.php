@@ -4,13 +4,14 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -41,4 +42,26 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $guarded = [];
+    
+    public function mentalHealth()
+    {
+        return $this->hasMany(MentalHealthEvaluation::class);
+    }
+
+    public function physicalHealth()
+    {
+        return $this->hasMany(PhysicalHealthEvaluation::class);
+    }
+
+    public function emotionalHealth()
+    {
+        return $this->hasMany(EmotionalHealthEvaluation::class);
+    }
+
+    public function socialWellbeing()
+    {
+        return $this->hasMany(SocialWellbeingEvaluation::class);
+    }
 }

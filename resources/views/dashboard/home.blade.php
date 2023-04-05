@@ -1,107 +1,86 @@
 @extends('layout.structure')
 
 @section('content')
-    {{-- <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
-        <div class="col">
-         <div class="card rounded-4">
-           <div class="card-body">
-             <div class="d-flex align-items-center">
-               <div class="">
-                 <p class="mb-1">Total Orders</p>
-                 <h4 class="mb-0">0</h4>
-                 <p class="mb-0 mt-2 font-13"><i class="bi bi-arrow-up"></i><span>22.5% from last week</span></p>
-               </div>
-               <div class="ms-auto widget-icon bg-primary text-white">
-                 <i class="bi bi-basket2"></i>
-               </div>
-             </div>
+<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
 
+    <div class="col">
+     <div class="card rounded-4">
+       <div class="card-body">
+        <a href="#">
+         <div class="d-flex align-items-center">
+           <div class="">
+             <p class="mb-1">Physical Health</p>
+             <h4 class="mb-0">Assessment</h4>
+             <p class="mb-0 mt-2 font-13"><i class="bi bi-clock"></i><span>Last Visit: April 1, 2022</span></p>
+           </div>
+           <div class="ms-auto widget-icon bg-primary text-white">
+             <i class="bi bi-activity"></i>
            </div>
          </div>
-        </div>
-        <div class="col">
-         <div class="card rounded-4">
-           <div class="card-body">
-             <div class="d-flex align-items-center">
-               <div class="">
-                 <p class="mb-1">Total Income</p>
-                 <h4 class="mb-0">GHS 9,786</h4>
-                 <p class="mb-0 mt-2 font-13"><i class="bi bi-arrow-up"></i><span>13.2% from last week</span></p>
-               </div>
-               <div class="ms-auto widget-icon bg-success text-white">
-                 <i class="bi bi-currency-dollar"></i>
-               </div>
-             </div>
+        </a>
+       </div>
+     </div>
+    </div>
+
+    <div class="col">
+     <div class="card rounded-4">
+       <div class="card-body">
+        <a href="#" >
+         <div class="d-flex align-items-center">
+           <div class="">
+             <p class="mb-1">Emotional Health</p>
+             <h4 class="mb-0">Assessment</h4>
+             <p class="mb-0 mt-2 font-13"><i class="bi bi-clock"></i><span>Last Visit: April 1, 2022</span></p>
+           </div>
+           <div class="ms-auto widget-icon bg-success text-white">
+             <i class="bi bi-emoji-heart-eyes-fill"></i>
            </div>
          </div>
-        </div>
-        <div class="col">
-         <div class="card rounded-4">
-           <div class="card-body">
-             <div class="d-flex align-items-center">
-               <div class="">
-                 <p class="mb-1">Total Views</p>
-                 <h4 class="mb-0">875</h4>
-                 <p class="mb-0 mt-2 font-13"><i class="bi bi-arrow-up"></i><span>12.3% from last week</span></p>
-               </div>
-               <div class="ms-auto widget-icon bg-orange text-white">
-                 <i class="bi bi-emoji-heart-eyes"></i>
-               </div>
-             </div>
+        </a>
+       </div>
+     </div>
+    </div>
+
+    <div class="col">
+     <div class="card rounded-4">
+       <div class="card-body">
+        <a href="#" >
+         <div class="d-flex align-items-center">
+           <div class="">
+             <p class="mb-1">Mental Health</p>
+             <h4 class="mb-0">Assessment</h4>
+             <p class="mb-0 mt-2 font-13"><i class="bi bi-clock"></i><span>Last Visit: April 1, 2022</span></p>
+           </div>
+           <div class="ms-auto widget-icon bg-orange text-white">
+             <i class="bi bi-activity"></i>
            </div>
          </div>
-        </div>
-        <div class="col">
-         <div class="card rounded-4">
-           <div class="card-body">
-             <div class="d-flex align-items-center">
-               <div class="">
-                 <p class="mb-1">New Clients</p>
-                 <h4 class="mb-0">9853</h4>
-                 <p class="mb-0 mt-2 font-13"><i class="bi bi-arrow-up"></i><span>32.7% from last week</span></p>
-               </div>
-               <div class="ms-auto widget-icon bg-info text-white">
-                 <i class="bi bi-people-fill"></i>
-               </div>
-             </div>
+        </a>
+       </div>
+     </div>
+    </div>
+
+    <div class="col">
+     <div class="card rounded-4">
+       <div class="card-body">
+        <a href="#" >
+         <div class="d-flex align-items-center">
+           <div class="">
+             <p class="mb-1">Social Wellbeing</p>
+             <h4 class="mb-0">Assessment</h4>
+             <p class="mb-0 mt-2 font-13"><i class="bi bi-clock"></i><span>Last Visit: April 1, 2022</span></p>
+           </div>
+           <div class="ms-auto widget-icon bg-info text-white">
+             <i class="bi bi-activity"></i>
            </div>
          </div>
-        </div>
+        </a>
+       </div>
+     </div>
+    </div>
 
-    </div><!--end row--> --}}
-
-
+</div><!--end row-->
     <div class="row">
-       {{-- <div class="col-12 col-lg-8 col-xl-8 d-flex">
-          <div class="card w-100 rounded-4">
-            <div class="card-body">
-             <div class="d-flex align-items-center mb-3">
-               <h6 class="mb-0">Revenue History</h6>
-               <div class="fs-5 ms-auto dropdown">
-                  <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></div>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </div>
-              </div>
-             <div class="d-flex align-items-center gap-3">
-               <div class="">
-                 <h4 class="text-success mb-0">GHS 9,279</h4>
-                 <p class="mb-0">Revenue</p>
-               </div>
-               <div class="vr"></div>
-               <div class="">
-                 <h4 class="text-pink mb-0">GHS 5,629</h4>
-                 <p class="mb-0">Investment</p>
-               </div>
-             </div>
-               <div id="chart1"></div>
-            </div>
-          </div>
-       </div> --}}
        <div class="col-12 col-lg-4 col-xl-4 d-flex">
          <div class="card w-100 rounded-4">
            <div class="card-body">
@@ -126,142 +105,12 @@
            </ul>
          </div>
       </div>
-
-    </div><!--end row-->
-
-    {{-- <div class="row row-cols-1 row-cols-lg-4 radial-charts g-4">
-      <div class="col">
-         <div class="card rounded-4">
-           <div class="card-body">
-             <div class="text-center">
-               <p class="mb-1">Orders</p>
-               <h4 class="">9,254</h4>
-             </div>
-              <div class="">
-                 <div id="chart3"></div>
-              </div>
-             <div class="text-center">
-               <p class="mb-1">Completed</p>
-               <h4 class="">5632</h4>
-             </div>
-           </div>
-         </div>
-      </div>
-      <div class="col">
-       <div class="card rounded-4">
-         <div class="card-body">
-           <div class="text-center">
-             <p class="mb-1">Unique Visitors</p>
-             <h4 class="">5,2684</h4>
-           </div>
-            <div class="">
-               <div id="chart4"></div>
-            </div>
-           <div class="text-center">
-             <p class="mb-1">Increased since Last Week</p>
-             <h4 class="">25%</h4>
-           </div>
-         </div>
-       </div>
     </div>
-    <div class="col">
-     <div class="card rounded-4">
-       <div class="card-body">
-         <div class="text-center">
-           <p class="mb-1">Impressions</p>
-           <h4 class="">7,362</h4>
-         </div>
-          <div class="">
-             <div id="chart5"></div>
-          </div>
-         <div class="text-center">
-           <p class="mb-1">Increased since Last Week</p>
-           <h4 class="">45%</h4>
-         </div>
-       </div>
-     </div>
-  </div>
-  <div class="col">
-   <div class="card rounded-4">
-     <div class="card-body">
-       <div class="text-center">
-         <p class="mb-1">Followers</p>
-         <h4 class="">4278K</h4>
-       </div>
-        <div class="">
-           <div id="chart6"></div>
-        </div>
-       <div class="text-center">
-         <p class="mb-1">Increased since Last Week</p>
-         <h4 class="">55%</h4>
-       </div>
-     </div>
-   </div>
- </div>
-
-</div><!--end row-->
-
-<div class="row row-cols-1 row-cols-lg-3">
- <div class="col">
-   <div class="card rounded-4">
-     <div class="card-body">
-        <div class="d-flex align-items-center justify-content-between mb-3">
-         <div class="">
-           <h4 class="mb-0">24.5K</h4>
-           <p class="mb-0">Facebook Followers</p>
-        </div>
-        <div class="fs-2 text-facebook">
-         <i class="bi bi-facebook"></i>
-       </div>
-        </div>
-        <div id="chart7"></div>
-     </div>
-   </div>
- </div>
- <div class="col">
-   <div class="card rounded-4">
-     <div class="card-body">
-        <div class="d-flex align-items-center justify-content-between mb-3">
-         <div class="">
-           <h4 class="mb-0">37.8K</h4>
-           <p class="mb-0">Twitter Followers</p>
-        </div>
-        <div class="fs-2 text-twitter">
-         <i class="bi bi-twitter"></i>
-       </div>
-        </div>
-        <div id="chart8"></div>
-     </div>
-   </div>
- </div>
- <div class="col">
-   <div class="card rounded-4">
-     <div class="card-body">
-        <div class="d-flex align-items-center justify-content-between mb-3">
-         <div class="">
-           <h4 class="mb-0">56.9K</h4>
-           <p class="mb-0">Youtube Subscribers</p>
-        </div>
-        <div class="fs-2 text-youtube">
-         <i class="bi bi-youtube"></i>
-       </div>
-        </div>
-        <div id="chart9"></div>
-     </div>
-   </div>
- </div>
-
-</div><!--end row--> --}}
-
 @endsection
 
 @section('footerLinks')
   <script src="{{ asset('media/plugins/chartjs/js/Chart.min.js') }}"></script>
   <script src="{{ asset('media/plugins/chartjs/js/Chart.extension.js') }}"></script>
   <script src="{{ asset('media/plugins/apexcharts-bundle/js/apexcharts.min.js') }}"></script>
-   <!-- Vector map JavaScript -->
-   {{-- <script src="{{ asset('media/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
-   <script src="{{ asset('media/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script> --}}
-  <!--app-->
   <script src="{{ asset('media/js/index.js') }}"></script>
 @endsection
