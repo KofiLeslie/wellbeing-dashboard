@@ -25,7 +25,7 @@ class UserController extends Controller
                 return redirect()->back()->with('success', 'Input field(s) cannot be blank');
             //    return redirect('home')->with($status, $msg);
             }
-            return $request->sex;
+            
             $user = User::find(Auth::id());
             $user->dob = $request->dob;
             $user->sex = trim(strtolower($request->sex));
