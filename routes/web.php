@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,13 +28,21 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
-    Route::controller(LogoutController::class)->group(function () {
-        Route::post('/away', 'logout')->name('away');
+    // Route::controller(LogoutController::class)->group(function () {
+    //     Route::post('/away', 'logout')->name('away');
+    // });
+
+    Route::controller(UserController::class)->group(function () {
+        Route::patch('/update', 'updateBio')->name('update');
     });
 
     Route::controller(HomeController::class)->group(function () {
         Route::get('/home', 'index')->name('home');
     });
+
+    // Route::get('/bio', function () {
+    //     return view('landing.bio');
+    // });
 
     Route::get('/profile', function () {
         return view('profile.list');
@@ -79,4 +88,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/evaluate/social', function () {
         return view('evaluate.social');
     });
+
 });

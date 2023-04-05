@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function updateBio(User $user, Request $request)
+    public function updateBio(Request $request)
     {
         try {
             $valivate = Validator::make(
@@ -19,17 +20,20 @@ class UserController extends Controller
                     'loc' => ['required', 'string', 'max:50']
                 ]
             );
-
+            // return $request->dob;
             if ($valivate->fails()) {
-                return redirect()->back()->with($valivate->fails());
+                return redirect()->back()->with('success', 'Input field(s) cannot be blank');
+            //    return redirect('home')->with($status, $msg);
             }
-
+            return $request->sex;
+            $user = User::find(Auth::id());
             $user->dob = $request->dob;
             $user->sex = trim(strtolower($request->sex));
             $user->location = trim($request->loc);
-            return $user->save() ? view('dashboard.home') : redirect()->back()->with('error', 'Error occured processing your request');;
+            return $user->save() ? redirect('home')->with('success', 'Record updated successfully') : redirect()->back()->with('fail', 'Error occured processing your request');;
         } catch (\Throwable $e) {
-            return redirect()->back()->with('error', 'Error occured processing your request');
+            return 123;
+            return redirect()->back()->with('success', 'Error occured processing your request');
         }
     }
 }
