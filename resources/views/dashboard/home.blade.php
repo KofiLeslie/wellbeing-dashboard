@@ -4,16 +4,16 @@
 <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
 
     <div class="col">
-     <div class="card rounded-4">
+     <div class="card rounded-4 bg-primary">
        <div class="card-body">
-        <a href="#">
+        <a href="#" class="text-white">
          <div class="d-flex align-items-center">
            <div class="">
              <p class="mb-1">Physical Health</p>
              <h4 class="mb-0">Assessment</h4>
              <p class="mb-0 mt-2 font-13"><i class="bi bi-clock"></i><span>Last Visit: April 1, 2022</span></p>
            </div>
-           <div class="ms-auto widget-icon bg-primary text-white">
+           <div class="ms-auto widget-icon text-primary">
              <i class="bi bi-activity"></i>
            </div>
          </div>
@@ -23,16 +23,16 @@
     </div>
 
     <div class="col">
-     <div class="card rounded-4">
+     <div class="card rounded-4 bg-success">
        <div class="card-body">
-        <a href="#" >
+        <a href="#" class="text-white">
          <div class="d-flex align-items-center">
            <div class="">
              <p class="mb-1">Emotional Health</p>
              <h4 class="mb-0">Assessment</h4>
              <p class="mb-0 mt-2 font-13"><i class="bi bi-clock"></i><span>Last Visit: April 1, 2022</span></p>
            </div>
-           <div class="ms-auto widget-icon bg-success text-white">
+           <div class="ms-auto widget-icon  text-success">
              <i class="bi bi-emoji-heart-eyes-fill"></i>
            </div>
          </div>
@@ -42,16 +42,16 @@
     </div>
 
     <div class="col">
-     <div class="card rounded-4">
+     <div class="card rounded-4 bg-orange">
        <div class="card-body">
-        <a href="#" >
+        <a href="#" class="text-white">
          <div class="d-flex align-items-center">
            <div class="">
              <p class="mb-1">Mental Health</p>
              <h4 class="mb-0">Assessment</h4>
              <p class="mb-0 mt-2 font-13"><i class="bi bi-clock"></i><span>Last Visit: April 1, 2022</span></p>
            </div>
-           <div class="ms-auto widget-icon bg-orange text-white">
+           <div class="ms-auto widget-icon text-orange">
              <i class="bi bi-activity"></i>
            </div>
          </div>
@@ -61,16 +61,16 @@
     </div>
 
     <div class="col">
-     <div class="card rounded-4">
+     <div class="card rounded-4 bg-info">
        <div class="card-body">
-        <a href="#" >
+        <a href="#" class="text-white">
          <div class="d-flex align-items-center">
            <div class="">
              <p class="mb-1">Social Wellbeing</p>
              <h4 class="mb-0">Assessment</h4>
              <p class="mb-0 mt-2 font-13"><i class="bi bi-clock"></i><span>Last Visit: April 1, 2022</span></p>
            </div>
-           <div class="ms-auto widget-icon bg-info text-white">
+           <div class="ms-auto widget-icon  text-info">
              <i class="bi bi-activity"></i>
            </div>
          </div>
