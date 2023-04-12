@@ -22,10 +22,10 @@ class UserController extends Controller
             );
             // return $request->dob;
             if ($valivate->fails()) {
-                return redirect()->back()->with('success', 'Input field(s) cannot be blank');
+                return redirect()->back()->with('fail', 'Input field(s) cannot be blank');
             //    return redirect('home')->with($status, $msg);
             }
-            
+
             $user = User::find(Auth::id());
             $user->dob = $request->dob;
             $user->sex = trim(strtolower($request->sex));

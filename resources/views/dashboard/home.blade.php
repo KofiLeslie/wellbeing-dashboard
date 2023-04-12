@@ -6,7 +6,7 @@
     <div class="col">
      <div class="card rounded-4 bg-primary">
        <div class="card-body">
-        <a href="#" class="text-white">
+        <a href="{{ url('/assess/physical') }}" class="text-white">
          <div class="d-flex align-items-center">
            <div class="">
              <p class="mb-1">Physical Health</p>

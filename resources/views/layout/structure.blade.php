@@ -354,7 +354,7 @@
               <ul>
                 <li> <a href="{{ url('/assess/physical') }}"><i class="bi bi-circle"></i>Physical Health</a>
                 </li>
-                <li> <a href="{{ url('/assess/mental') }}"><i class="bi bi-circle"></i>Mental Health</a>
+                <li> <a href="{{ url('/assess/mental') }}"><i class="bi bi-circle"></i>Psychological Wellbeing</a>
                 </li>
                 <li> <a href="{{ url('/assess/emotional') }}"><i class="bi bi-circle"></i>Emotional Health</a>
                 </li>

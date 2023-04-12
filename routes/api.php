@@ -18,4 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+// Route::controller(PhysicalHealthController::class)->group(function () {
+//     Route::get('/questions/physical', 'index');
+//     Route::post('save', 'store')->name('physical.save');
+// });
