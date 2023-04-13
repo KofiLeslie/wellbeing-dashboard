@@ -22,15 +22,21 @@ class UserController extends Controller
             );
             // return $request->dob;
             if ($valivate->fails()) {
-                return redirect()->back()->with('fail', 'Input field(s) cannot be blank');
-            //    return redirect('home')->with($status, $msg);
+                return redirect()->back()->with('error', 'Input field(s) cannot be blank');
             }
+
+            // get age from date of birth
+            $age = \Carbon\Carbon::parse($request->dob)->age;
+
+            $age_group = $age >= 60 ? 'OLD' : 'YOUNG';
 
             $user = User::find(Auth::id());
             $user->dob = $request->dob;
             $user->sex = trim(strtolower($request->sex));
             $user->location = trim($request->loc);
-            return $user->save() ? redirect('home')->with('success', 'Record updated successfully') : redirect()->back()->with('fail', 'Error occured processing your request');;
+            $user->age_group = $age_group;
+
+            return $user->save() ? redirect('home')->with('success', 'Record updated successfully') : redirect()->back()->with('error', 'Error occured processing your request');;
         } catch (\Throwable $e) {
             return 123;
             return redirect()->back()->with('success', 'Error occured processing your request');

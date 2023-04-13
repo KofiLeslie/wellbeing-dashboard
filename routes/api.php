@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PhysicalHealthEvaluationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::controller(PhysicalHealthController::class)->group(function () {
-//     Route::get('/questions/physical', 'index');
-//     Route::post('save', 'store')->name('physical.save');
+// Route::controller(PhysicalHealthEvaluationController::class)->group(function () {
+//     Route::post('answer', 'store')->name('answer');
 // });

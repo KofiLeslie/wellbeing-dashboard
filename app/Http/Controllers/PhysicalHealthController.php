@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\PhysicalHealth;
+use App\Models\PhysicalHealthEvaluation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\VarDumper\VarDumper;
 
 class PhysicalHealthController extends Controller
 {
@@ -84,9 +88,51 @@ class PhysicalHealthController extends Controller
 
     public function assessment()
     {
-        $data = [
-            'physical' => PhysicalHealth::all()->groupBy('question_group')
-        ];
+        $questionGrouo = 'endurance';
+        $isComplete = false;
+        $formArr = ['endurance', 'mobility and balance', 'strength', 'pain'];
+        // get user's last evaluation state
+        // check if user is a first timer
+        $chk = PhysicalHealthEvaluation::whereUser_id(Auth::id())->count();
+        if ($chk > 0) {
+            $eva = PhysicalHealthEvaluation::whereUser_id(Auth::id())->latest()->first();
+            
+            switch (strtolower($eva->question_group)) {
+                case 'endurance':
+                    $questionGrouo = $formArr[1];
+                break;
+                case 'mobility and balance':
+                    $questionGrouo = $formArr[2];
+                break;
+                case 'strength':
+                    $questionGrouo = $formArr[3];
+                break;
+                case 'pain':
+                    $questionGrouo = null;
+                    $isComplete = true;
+                break;
+            }
+        }
+
+        $data = [];
+        $data['title'] = ucwords($questionGrouo);
+
+        $data['physical'] = $questionGrouo = null ? [] : PhysicalHealth::whereQuestion_group(strtolower($questionGrouo))->whereAge_group(Auth::user()->age_group)->get();
+
+        if ($isComplete) {
+            // get total
+            $total = PhysicalHealthEvaluation::whereUser_id(Auth::id())->sum('response');
+            if ($total >= 24 && $total <= 96):
+                $data['score'] = $total;
+                $data['msg'] = 'Good Physical Health';
+            elseif ($total >= 97 && $total <= 168):
+                $data['score'] = $total;
+                $data['msg'] = 'Average Physical Health';
+            else:
+                $data['score'] = $total;
+                $data['msg'] = 'Poor Physical Health';
+            endif;
+        }
         // return response()->json($data, 200);
         return view('assess.physical', $data);
     }

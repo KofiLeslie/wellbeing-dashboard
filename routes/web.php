@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhysicalHealthController;
+use App\Http\Controllers\PhysicalHealthEvaluationController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -88,15 +89,19 @@ Route::middleware('auth')->group(function () {
         return view('evaluate.social');
     });
 
-});
-Route::controller(PhysicalHealthController::class)->group(function () {
-    Route::get('/assess/physical', 'assessment');
-    Route::get('/questions/physical', 'index');
-    Route::post('save', 'store')->name('physical.save');
-    Route::patch('physical/{physicalHealth}', 'update')->name('physical/{physicalHealth}');
-    Route::post('delete/{physicalHealth}', 'destroy')->name('delete/{physicalHealth}');
+    Route::controller(PhysicalHealthController::class)->group(function () {
+        Route::get('/assess/physical', 'assessment');
+        Route::get('/questions/physical', 'index');
+        Route::post('save', 'store')->name('physical.save');
+        Route::patch('physical/{physicalHealth}', 'update')->name('physical/{physicalHealth}');
+        Route::post('delete/{physicalHealth}', 'destroy')->name('delete/{physicalHealth}');
+    });
+
+    Route::controller(PhysicalHealthEvaluationController::class)->group(function () {
+        Route::post('answer', 'store')->name('physical.answer');
+    });
 });
 
-Route::fallback(function(){
+Route::fallback(function () {
     return view('404.404');
 });

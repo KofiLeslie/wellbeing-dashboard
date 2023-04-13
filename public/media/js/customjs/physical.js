@@ -1,23 +1,34 @@
-function save(parent) {
-    var myArr = [];
+function saveProgress(index) {
+    let radioValues = [];
+    let radioNames = [];
+    let radioButton = document.getElementsByClassName("sol" + index);
+    let allChecked = true;
 
+    for (let i = 0; i < radioButton.length; i += 10) {
+        if (radioButton[i].type === "radio") {
+            radioNames.push(radioButton[i].name);
+        }
+    }
 
-var radioGroup = document.getElementById($parent);
-var radioButtons = radioGroup.getElementsByTagName("input");
-var allChecked = true;
+    // next is to now check if they have been checked or not
+    for (let i = 0; i < radioNames.length; i++) {
+        if ($("input[name=" + radioNames[i] + "]:checked").length == 0) {
+            allChecked = false;
+            break;
+        } else {
+            radioValues.push(
+                $("input[name=" + radioNames[i] + "]:checked").val()
+            );
+        }
+    }
 
-for (var i = 0; i < radioButtons.length; i++) {
-  if (radioButtons[i].type === "radio" && !radioButtons[i].checked) {
-    allChecked = false;
-    break;
-  }
-}
+    if (allChecked) {
 
-if (allChecked) {
-  console.log("All radio buttons are checked.");
-} else {
-  console.log("Not all radio buttons are checked.");
-}
+        $('#datax').val(JSON.stringify(radioValues));
 
+        $('#myform').submit();
 
+    } else {
+        $('#myform').submit();
+    }
 }
