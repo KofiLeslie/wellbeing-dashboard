@@ -99,6 +99,7 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(PhysicalHealthEvaluationController::class)->group(function () {
         Route::post('answer', 'store')->name('physical.answer');
+        Route::get('physical/score', 'evaluate');
     });
 });
 

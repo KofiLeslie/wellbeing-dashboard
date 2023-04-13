@@ -6,6 +6,7 @@ use App\Models\PhysicalHealthEvaluation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class PhysicalHealthEvaluationController extends Controller
@@ -55,6 +56,13 @@ class PhysicalHealthEvaluationController extends Controller
         } catch (\Throwable $e) {
             return redirect()->back()->with('error', 'Error has ocured');
         }
+    }
+
+    public function evaluate(){
+        // $eva = PhysicalHealthEvaluation::whereUser_id(Auth::id())->groupBy('question_group')->get();
+        $eva = PhysicalHealthEvaluation::select('question_group',DB::raw('sum(response) as total_score'))->where('user_id', '=', Auth::id())->groupBy('question_group')->get();
+        return response()->json(['data' => $eva], 200);
+        // return view('evaluate.physical');
     }
 
 }
