@@ -25,10 +25,10 @@
     <div class="col">
      <div class="card rounded-4 bg-success">
        <div class="card-body">
-        <a href="#" class="text-white">
+        <a href="{{ url('/assess/emotional') }}" class="text-white">
          <div class="d-flex align-items-center">
            <div class="">
-             <p class="mb-1">Emotional Health</p>
+             <p class="mb-1">Overall Health</p>
              <h4 class="mb-0">Assessment</h4>
              <p class="mb-0 mt-2 font-13"><i class="bi bi-clock"></i><span>Last Visit: April 1, 2022</span></p>
            </div>
@@ -44,10 +44,10 @@
     <div class="col">
      <div class="card rounded-4 bg-orange">
        <div class="card-body">
-        <a href="#" class="text-white">
+        <a href="{{ url('/assess/mental') }}" class="text-white">
          <div class="d-flex align-items-center">
            <div class="">
-             <p class="mb-1">Mental Health</p>
+             <p class="mb-1">Psychological Wellbeing</p>
              <h4 class="mb-0">Assessment</h4>
              <p class="mb-0 mt-2 font-13"><i class="bi bi-clock"></i><span>Last Visit: April 1, 2022</span></p>
            </div>
@@ -63,7 +63,7 @@
     <div class="col">
      <div class="card rounded-4 bg-info">
        <div class="card-body">
-        <a href="#" class="text-white">
+        <a href="{{ url('/assess/social') }}" class="text-white">
          <div class="d-flex align-items-center">
            <div class="">
              <p class="mb-1">Social Wellbeing</p>

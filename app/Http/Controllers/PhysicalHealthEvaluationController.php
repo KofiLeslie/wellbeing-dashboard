@@ -59,10 +59,8 @@ class PhysicalHealthEvaluationController extends Controller
     }
 
     public function evaluate(){
-        // $eva = PhysicalHealthEvaluation::whereUser_id(Auth::id())->groupBy('question_group')->get();
         $eva = PhysicalHealthEvaluation::select('question_group',DB::raw('sum(response) as total_score'))->where('user_id', '=', Auth::id())->groupBy('question_group')->get();
         return response()->json(['data' => $eva], 200);
-        // return view('evaluate.physical');
     }
 
 }

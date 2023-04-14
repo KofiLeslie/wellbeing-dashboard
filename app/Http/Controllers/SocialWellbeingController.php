@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\SocialWellbeing;
+use App\Models\SocialWellbeingEvaluation;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 class SocialWellbeingController extends Controller
 {
     /**
@@ -12,15 +14,8 @@ class SocialWellbeingController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $physical = SocialWellbeing::all();
+        return view('questions.social', ['physical' => $physical]);
     }
 
     /**
@@ -28,23 +23,26 @@ class SocialWellbeingController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        try {
+            $validate = Validator::make(
+                $request->all(),
+                [
+                    'question' => ['required'],
+                    'qstGroup' => ['required']
+                ]
+            );
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(SocialWellbeing $socialWellbeing)
-    {
-        //
-    }
+            if ($validate->fails()) {
+                return redirect()->back()->with('error', 'Input field(s) cannot be blank');
+            }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(SocialWellbeing $socialWellbeing)
-    {
-        //
+            $physical = new SocialWellbeing();
+            $physical->question = $request->question;
+            $physical->question_group = $request->qstGroup;
+            return $physical->save() ? redirect()->back()->with('success', 'Added successfully') : redirect()->back()->with('fail', 'Error occured processing your request');
+        } catch (\Throwable $e) {
+            return redirect()->back()->with('fail', $e->getMessage());
+        }
     }
 
     /**
@@ -52,7 +50,25 @@ class SocialWellbeingController extends Controller
      */
     public function update(Request $request, SocialWellbeing $socialWellbeing)
     {
-        //
+        try {
+            $validate = Validator::make(
+                $request->all(),
+                [
+                    'question' . $socialWellbeing->id => ['required'],
+                    'qstGroup' . $socialWellbeing->id => ['required']
+                ]
+            );
+
+            if ($validate->fails()) {
+                return redirect()->back()->with('error', 'Input field(s) cannot be blank');
+            }
+
+            $socialWellbeing->question = $request->input('question' . $socialWellbeing->id);
+            $socialWellbeing->question_group = $request->input('qstGroup' . $socialWellbeing->id);
+            return $socialWellbeing->save() ? redirect()->back()->with('success', 'Question Updated successfully') : redirect()->back()->with('fail', 'Error occured processing your request');
+        } catch (\Throwable $e) {
+            return redirect()->back()->with('fail', $e->getMessage());
+        }
     }
 
     /**
@@ -60,6 +76,63 @@ class SocialWellbeingController extends Controller
      */
     public function destroy(SocialWellbeing $socialWellbeing)
     {
-        //
+        return $socialWellbeing->delete() ? redirect()->back()->with('success', 'Item deleted successfully') : redirect()->back()->with('fail', 'Error occured processing your request');
+    }
+
+    public function assessment()
+    {
+        $questionGrouo = 'social connectedness/integration';
+        $isComplete = false;
+        $formArr = ['social connectedness/integration', 'autonomy', 'social contribution', 'social acceptance', 'social capital/inclination', 'self-acceptance'];
+        // get user's last evaluation state
+        // check if user is a first timer
+        $chk = SocialWellbeingEvaluation::whereUser_id(Auth::id())->count();
+        if ($chk > 0) {
+            $eva = SocialWellbeingEvaluation::whereUser_id(Auth::id())->latest()->first();
+
+            switch (strtolower($eva->question_group)) {
+                case 'social connectedness/integration':
+                    $questionGrouo = $formArr[1];
+                break;
+                case 'autonomy':
+                    $questionGrouo = $formArr[2];
+                break;
+                case 'social contribution':
+                    $questionGrouo = $formArr[3];
+                break;
+                case 'social acceptance':
+                    $questionGrouo = $formArr[4];
+                break;
+                case 'social capital/inclination':
+                    $questionGrouo = $formArr[5];
+                break;
+                case 'self-acceptance':
+                    $questionGrouo = null;
+                    $isComplete = true;
+                break;
+            }
+        }
+
+        $data = [];
+        $data['title'] = ucwords($questionGrouo);
+
+        $data['physical'] = $questionGrouo = null ? [] : SocialWellbeing::whereQuestion_group(strtolower($questionGrouo))->get();
+
+        if ($isComplete) {
+            // get total
+            $total = SocialWellbeingEvaluation::whereUser_id(Auth::id())->sum('response');
+            if ($total >= 54 && $total <= 180):
+                $data['score'] = $total;
+                $data['msg'] = 'Good Social Wellbeing';
+            elseif ($total >= 181 && $total <= 360):
+                $data['score'] = $total;
+                $data['msg'] = 'Average Social Wellbeing';
+            else:
+                $data['score'] = $total;
+                $data['msg'] = 'Poor Social Wellbeing';
+            endif;
+        }
+        // return response()->json($data, 200);
+        return view('assess.social', $data);
     }
 }

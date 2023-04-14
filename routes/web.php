@@ -1,9 +1,14 @@
 <?php
 
-use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\EmotionalHealthController;
+use App\Http\Controllers\EmotionalHealthEvaluationController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MentalHealthController;
+use App\Http\Controllers\MentalHealthEvaluationController;
 use App\Http\Controllers\PhysicalHealthController;
 use App\Http\Controllers\PhysicalHealthEvaluationController;
+use App\Http\Controllers\SocialWellbeingController;
+use App\Http\Controllers\SocialWellbeingEvaluationController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -30,9 +35,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
-    // Route::controller(LogoutController::class)->group(function () {
-    //     Route::post('/away', 'logout')->name('away');
-    // });
 
     Route::controller(UserController::class)->group(function () {
         Route::patch('/update', 'updateBio')->name('update');
@@ -41,10 +43,6 @@ Route::middleware('auth')->group(function () {
     Route::controller(HomeController::class)->group(function () {
         Route::get('/home', 'index')->name('home');
     });
-
-    // Route::get('/bio', function () {
-    //     return view('landing.bio');
-    // });
 
     Route::get('/profile', function () {
         return view('profile.list');
@@ -56,20 +54,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/book', function () {
         return view('book.list');
-    });
-
-    Route::get('/assess/mental', function () {
-        return view('assess.mental');
-    });
-
-
-
-    Route::get('/assess/emotional', function () {
-        return view('assess.emotional');
-    });
-
-    Route::get('/assess/social', function () {
-        return view('assess.social');
     });
 
     //
@@ -100,6 +84,45 @@ Route::middleware('auth')->group(function () {
     Route::controller(PhysicalHealthEvaluationController::class)->group(function () {
         Route::post('answer', 'store')->name('physical.answer');
         Route::get('physical/score', 'evaluate');
+    });
+
+    Route::controller(SocialWellbeingController::class)->group(function () {
+        Route::get('/assess/social', 'assessment');
+        Route::get('/questions/social', 'index');
+        Route::post('social/save', 'store')->name('social.save');
+        Route::patch('social/{socialWellbeing}', 'update')->name('social/{socialWellbeing}');
+        Route::post('social/delete/{socialWellbeing}', 'destroy')->name('social/delete/{socialWellbeing}');
+    });
+
+    Route::controller(SocialWellbeingEvaluationController::class)->group(function () {
+        Route::post('social/answer', 'store')->name('social.answer');
+        Route::get('social/score', 'evaluate');
+    });
+
+    Route::controller(EmotionalHealthController::class)->group(function () {
+        Route::get('/assess/emotional', 'assessment');
+        Route::get('/questions/emotional', 'index');
+        Route::post('emotional/save', 'store')->name('emotional.save');
+        Route::patch('emotional/{emotionalHealth}', 'update')->name('emotional/{emotionalHealth}');
+        Route::post('emotional/delete/{emotionalHealth}', 'destroy')->name('emotional/delete/{emotionalHealth}');
+    });
+
+    Route::controller(EmotionalHealthEvaluationController::class)->group(function () {
+        Route::post('emotional/answer', 'store')->name('emotional.answer');
+        Route::get('emotional/score', 'evaluate');
+    });
+
+    Route::controller(MentalHealthController::class)->group(function () {
+        Route::get('/assess/mental', 'assessment');
+        Route::get('/questions/mental', 'index');
+        Route::post('mental/save', 'store')->name('mental.save');
+        Route::patch('mental/{mentalHealth}', 'update')->name('mental/{mentalHealth}');
+        Route::post('mental/delete/{mentalHealth}', 'destroy')->name('mental/delete/{mentalHealth}');
+    });
+
+    Route::controller(MentalHealthEvaluationController::class)->group(function () {
+        Route::post('mental/answer', 'store')->name('mental.answer');
+        Route::get('mental/score', 'evaluate');
     });
 });
 

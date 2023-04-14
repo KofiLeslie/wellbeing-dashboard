@@ -6,9 +6,7 @@ use App\Models\PhysicalHealth;
 use App\Models\PhysicalHealthEvaluation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use Symfony\Component\VarDumper\VarDumper;
 
 class PhysicalHealthController extends Controller
 {
@@ -96,7 +94,7 @@ class PhysicalHealthController extends Controller
         $chk = PhysicalHealthEvaluation::whereUser_id(Auth::id())->count();
         if ($chk > 0) {
             $eva = PhysicalHealthEvaluation::whereUser_id(Auth::id())->latest()->first();
-            
+
             switch (strtolower($eva->question_group)) {
                 case 'endurance':
                     $questionGrouo = $formArr[1];

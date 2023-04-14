@@ -69,39 +69,8 @@
 
               <li class="nav-item dropdown dropdown-large">
                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
-                  <div class="messages">
-                    <span class="notify-badge">5</span>
-                    <i class="bi bi-chat-right-fill"></i>
-                  </div>
-                </a>
-                <div class="dropdown-menu dropdown-menu-end p-0">
-                  <div class="p-2 border-bottom m-2">
-                      <h5 class="h5 mb-0">Messages</h5>
-                  </div>
-                 <div class="header-message-list p-2">
-                     <a class="dropdown-item" href="javascript:;">
-                       <div class="d-flex align-items-center">
-                          <img src="{{ asset('media/images/avatars/no-image.png') }}" alt="" class="rounded-circle" width="50" height="50">
-                          <div class="ms-3 flex-grow-1">
-                            <h6 class="mb-0 dropdown-msg-user">Amelio Joly <span class="msg-time float-end text-secondary">1 m</span></h6>
-                            <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">The standard chunk of lorem...</small>
-                          </div>
-                       </div>
-                     </a>
-
-                </div>
-                <div class="p-2">
-                  <div><hr class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="javascript:;">
-                      <div class="text-center">View All Messages</div>
-                    </a>
-                </div>
-               </div>
-              </li>
-              <li class="nav-item dropdown dropdown-large">
-                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
                   <div class="notifications">
-                    <span class="notify-badge">8</span>
+                    <span class="notify-badge">0</span>
                     <i class="bi bi-bell-fill"></i>
                   </div>
                 </a>
@@ -255,7 +224,7 @@
                 </li>
                 <li> <a href="{{ url('/assess/mental') }}"><i class="bi bi-circle"></i>Psychological Wellbeing</a>
                 </li>
-                <li> <a href="{{ url('/assess/emotional') }}"><i class="bi bi-circle"></i>Emotional Health</a>
+                <li> <a href="{{ url('/assess/emotional') }}"><i class="bi bi-circle"></i>Overall Health Health</a>
                 </li>
                 <li> <a href="{{ url('/assess/social') }}"><i class="bi bi-circle"></i>Social Wellbeing</a>
                 </li>

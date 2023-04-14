@@ -214,11 +214,11 @@
                         </div>
                     </a>
                 </li>
-                <li> <a href="{{ url('/assess/mental') }}"><i class="bi bi-circle"></i>Mental Health</a>
+                <li> <a href="{{ url('/questions/mental') }}"><i class="bi bi-activity"></i>Psychological Wellbeing </a>
                 </li>
-                <li> <a href="{{ url('/assess/emotional') }}"><i class="bi bi-circle"></i>Emotional Health</a>
+                <li> <a href="{{ url('/questions/emotional') }}"><i class="bi bi-circle"></i>Emotional Health</a>
                 </li>
-                <li> <a href="{{ url('/assess/social') }}"><i class="bi bi-circle"></i>Social Wellbeing</a>
+                <li> <a href="{{ url('/questions/social') }}"><i class="bi bi-activity"></i>Social Wellbeing</a>
                 </li>
 
             </ul>

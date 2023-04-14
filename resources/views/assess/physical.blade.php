@@ -45,7 +45,7 @@
                                                 @endphp
                                                 @foreach ($physical as $k => $question)
                                                     {{-- check if user is old or young --}}
-                                                    @if (Auth::user()->age_group == $question->age_group)
+                                                    {{-- @if (Auth::user()->age_group == $question->age_group) --}}
                                                         @php
                                                             $num += 1;
                                                         @endphp
@@ -71,7 +71,7 @@
 
                                                             </td>
                                                         </tr>
-                                                    @endif
+                                                    {{-- @endif --}}
                                                 @endforeach
                                             </tbody>
                                         </table>

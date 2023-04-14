@@ -36,7 +36,7 @@
                                     <select class="single-select" id="sex" name="sex">
                                         <option selected disabled>--SELECT SEX--</option>
                                         <option value="m">Male</option>
-                                        <option value="f">Femail</option>
+                                        <option value="f">Female</option>
                                     </select>
                                 </div>
                             </div>

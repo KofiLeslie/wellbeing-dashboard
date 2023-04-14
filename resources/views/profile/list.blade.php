@@ -44,32 +44,20 @@
                         @csrf
                         <div class="row g-3">
                             <div class="col-6">
-                               <label class="form-label">Username</label>
-                               <input type="text" class="form-control" value="jhon">
+                               <label class="form-label">Name</label>
+                               <input type="text" class="form-control" value="{{ Auth::user()->name }}">
                             </div>
                             <div class="col-6">
                              <label class="form-label">Email address</label>
-                             <input type="text" class="form-control" value="xyz@example.com">
-                           </div>
-                             <div class="col-6">
-                               <label class="form-label">First Name</label>
-                               <input type="text" class="form-control" value="jhon">
-                           </div>
-                           <div class="col-6">
-                               <label class="form-label">Last Name</label>
-                               <input type="text" class="form-control" value="">
+                             <input type="text" disabled class="form-control" value="{{ Auth::user()->email }}">
                            </div>
                            <div class="col-6">
                             <label class="form-label">Sex</label>
                             <select class="form-select">
-                                <option selected disabled>--SELECT SEX--</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
+                                <option disabled>--SELECT SEX--</option>
+                                <option value="m" {{ Auth::user()->sex == 'm' ? 'selected' : '' }}>Male</option>
+                                <option value="f" {{ Auth::user()->sex == 'f' ? 'selected' : '' }}>Female</option>
                               </select>
-                        </div>
-                        <div class="col-6">
-                            <label class="form-label">Age</label>
-                            <input type="number" class="form-control" min="1" max="120">
                         </div>
 
                         </div>
@@ -83,33 +71,13 @@
                     <div class="card-body">
                       {{-- <form> --}}
                         <div class="row g-3">
-                            <div class="col-6">
-                              <label class="form-label">Contact Number</label>
-                              <input type="text" class="form-control" value="1234567890">
-                             </div>
                              <div class="col-6">
-                                <label class="form-label">Address</label>
-                                <input type="text" class="form-control" value="47-A, city name, United States">
+                                <label class="form-label">Location</label>
+                                <input type="text" class="form-control" value="{{ Auth::user()->location }}">
                                </div>
                              <div class="col-6">
                                 <label class="form-label">City</label>
                                 <input type="text" class="form-control" value="jhon">
-                             </div>
-                             <div class="col-6">
-                              <label class="form-label">Country</label>
-                              <input type="text" class="form-control" value="xyz@example.com">
-                            </div>
-                              <div class="col-6">
-                                <label class="form-label">Pin Code</label>
-                                <input type="text" class="form-control" value="jhon">
-                            </div>
-                            <div class="col-6">
-                                <label class="form-label">Last Name</label>
-                                <input type="text" class="form-control" value="Deo">
-                            </div>
-                            <div class="col-12">
-                              <label class="form-label">About Me</label>
-                              <textarea class="form-control" rows="4" cols="4" placeholder="Describe yourself..."></textarea>
                              </div>
                         </div>
                       </form>
@@ -127,7 +95,7 @@
                   <div class="profile-avatar text-center">
                     <img src="{{ asset('media/images/avatars/no-image.png') }}" class="rounded-circle shadow" width="120" height="120" alt="">
                   </div>
-                  <div class="d-flex align-items-center justify-content-around mt-5 gap-3">
+                  {{-- <div class="d-flex align-items-center justify-content-around mt-5 gap-3">
                       <div class="text-center">
                         <h4 class="mb-0">45</h4>
                         <p class="mb-0 text-secondary">Friends</p>
@@ -140,19 +108,19 @@
                         <h4 class="mb-0">86</h4>
                         <p class="mb-0 text-secondary">Comments</p>
                       </div>
-                  </div>
+                  </div> --}}
                   <div class="text-center mt-4">
-                    <h4 class="mb-1">Jhon Deo, 27</h4>
-                    <p class="mb-0 text-secondary">Sydney, Australia</p>
+                    <h4 class="mb-1">{{ Auth::user()->name }}</h4>
+                    <p class="mb-0 text-secondary">{{ Auth::user()->location }}</p>
                     <div class="mt-4"></div>
-                    <h6 class="mb-1">HR Manager - Codervent Technology</h6>
-                    <p class="mb-0 text-secondary">University of Information Technology</p>
+                    {{-- <h6 class="mb-1">HR Manager - Codervent Technology</h6>
+                    <p class="mb-0 text-secondary">University of Information Technology</p> --}}
                   </div>
                   <hr>
-                  <div class="text-start">
+                  {{-- <div class="text-start">
                     <h5 class="">About</h5>
                     <p class="mb-0">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem.
-                  </div>
+                  </div> --}}
               </div>
               {{-- <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-top">
