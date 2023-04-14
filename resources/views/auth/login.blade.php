@@ -2,6 +2,16 @@
 
 @section('headerlinks')
 <link rel="stylesheet" href="{{ asset('media/css/login/login.css') }}">
+<style>
+    .xxaa{
+        /* width: 100%;
+    height: 100vh; */
+    background-image: url("{{ asset('media/images/error/auth-img-7.png') }}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* border: 2px solid #e9385a; */
+    }
+</style>
 @endsection
 
 @section('content')
@@ -79,8 +89,8 @@
             {{--  --}}
           </div>
         </div>
-        <div class="col-sm-6 px-0 d-none d-sm-block">
-          <img src="{{ asset('media/images/error/auth-img-7.png') }}" alt="login image" class="login-img">
+        <div class="col-sm-6 px-0 d-none d-sm-block xxaa">
+          {{-- <img src="{{ asset('media/images/error/auth-img-7.png') }}" alt="login image" class="login-img"> --}}
         </div>
       </div>
     </div>
