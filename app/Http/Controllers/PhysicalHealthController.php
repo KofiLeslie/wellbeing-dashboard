@@ -2,21 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EmotionalHealthEvaluation;
+use App\Models\MentalHealthEvaluation;
 use App\Models\PhysicalHealth;
 use App\Models\PhysicalHealthEvaluation;
+use App\Models\SocialWellbeingEvaluation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class PhysicalHealthController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      */
+    public $data = [];
+
     public function index()
     {
-        $physical = PhysicalHealth::all();
-        return view('questions.physical', ['physical' => $physical]);
+        $this->data['has_physical'] = PhysicalHealthEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_social'] = SocialWellbeingEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_mental'] = MentalHealthEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_emotional'] = EmotionalHealthEvaluation::whereUser_id(Auth::id())->count();
+
+        $this->data['physical'] = PhysicalHealth::all();
+        return view('questions.physical', $this->data);
     }
 
     /**
@@ -42,7 +52,7 @@ class PhysicalHealthController extends Controller
             $physical->question = $request->question;
             $physical->age_group = $request->ageGroup;
             $physical->question_group = $request->qstGroup;
-            return $physical->save() ? redirect('questions/physical')->with('success', 'Added successfully') : redirect('questions/physical')->with('fail', 'Error occured processing your request');
+            return $physical->save() ? redirect()->back()->with('success', 'Added successfully') : redirect()->back()->with('fail', 'Error occured processing your request');
         } catch (\Throwable $e) {
             return redirect()->back()->with('fail', $e->getMessage());
         }
@@ -70,7 +80,7 @@ class PhysicalHealthController extends Controller
             $physicalHealth->question = $request->input('question' . $physicalHealth->id);
             $physicalHealth->age_group = $request->input('ageGroup' . $physicalHealth->id);
             $physicalHealth->question_group = $request->input('qstGroup' . $physicalHealth->id);
-            return $physicalHealth->save() ? redirect('questions/physical')->with('success', 'Question Updated successfully') : redirect('questions/physical')->with('fail', 'Error occured processing your request');
+            return $physicalHealth->save() ? redirect()->back()->with('success', 'Question Updated successfully') : redirect()->back()->with('fail', 'Error occured processing your request');
         } catch (\Throwable $e) {
             return redirect()->back()->with('fail', $e->getMessage());
         }
@@ -81,11 +91,16 @@ class PhysicalHealthController extends Controller
      */
     public function destroy(PhysicalHealth $physicalHealth)
     {
-        return $physicalHealth->delete() ? redirect('questions/physical')->with('success', 'Item deleted successfully') : redirect('questions/physical')->with('fail', 'Error occured processing your request');
+        return $physicalHealth->delete() ? redirect()->back()->with('success', 'Item deleted successfully') : redirect()->back()->with('fail', 'Error occured processing your request');
     }
 
     public function assessment()
     {
+        $this->data['has_physical'] = PhysicalHealthEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_social'] = SocialWellbeingEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_mental'] = MentalHealthEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_emotional'] = EmotionalHealthEvaluation::whereUser_id(Auth::id())->count();
+
         $questionGrouo = 'endurance';
         $isComplete = false;
         $formArr = ['endurance', 'mobility and balance', 'strength', 'pain'];
@@ -112,26 +127,25 @@ class PhysicalHealthController extends Controller
             }
         }
 
-        $data = [];
-        $data['title'] = ucwords($questionGrouo);
+        $this->data['title'] = ucwords($questionGrouo);
 
-        $data['physical'] = $questionGrouo = null ? [] : PhysicalHealth::whereQuestion_group(strtolower($questionGrouo))->whereAge_group(Auth::user()->age_group)->get();
+        $this->data['physical'] = $questionGrouo = null ? [] : PhysicalHealth::whereQuestion_group(strtolower($questionGrouo))->whereAge_group(Auth::user()->age_group)->get();
 
         if ($isComplete) {
             // get total
             $total = PhysicalHealthEvaluation::whereUser_id(Auth::id())->sum('response');
             if ($total >= 24 && $total <= 96):
-                $data['score'] = $total;
-                $data['msg'] = 'Good Physical Health';
+                $this->data['score'] = $total;
+                $this->data['msg'] = 'Good Physical Health';
             elseif ($total >= 97 && $total <= 168):
-                $data['score'] = $total;
-                $data['msg'] = 'Average Physical Health';
+                $this->data['score'] = $total;
+                $this->data['msg'] = 'Average Physical Health';
             else:
-                $data['score'] = $total;
-                $data['msg'] = 'Poor Physical Health';
+                $this->data['score'] = $total;
+                $this->data['msg'] = 'Poor Physical Health';
             endif;
         }
         // return response()->json($data, 200);
-        return view('assess.physical', $data);
+        return view('assess.physical', $this->data);
     }
 }

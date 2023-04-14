@@ -24,7 +24,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <form action="{{ route('physical.answer') }}" id="myform" method="post"
+                                <form action="{{ route('social.answer') }}" id="myform" method="post"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="datax" id="datax">

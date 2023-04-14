@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EmotionalHealthController;
 use App\Http\Controllers\EmotionalHealthEvaluationController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MentalHealthController;
 use App\Http\Controllers\MentalHealthEvaluationController;
@@ -10,6 +12,7 @@ use App\Http\Controllers\PhysicalHealthEvaluationController;
 use App\Http\Controllers\SocialWellbeingController;
 use App\Http\Controllers\SocialWellbeingEvaluationController;
 use App\Http\Controllers\UserController;
+use App\Models\Booking;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,49 +31,28 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
-
-// Route::controller(LogoutController::class)->group(function () {
-//     Route::post('/away', 'logout')->name('away');
-// });
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
 
     Route::controller(UserController::class)->group(function () {
         Route::patch('/update', 'updateBio')->name('update');
+        Route::patch('/profile/update', 'updateProfile')->name('profile.update');
+        Route::get('/profile', 'index');
     });
 
     Route::controller(HomeController::class)->group(function () {
         Route::get('/home', 'index')->name('home');
+        Route::get('/feed', 'feed')->name('feed');
     });
 
-    Route::get('/profile', function () {
-        return view('profile.list');
+    Route::controller(FeedbackController::class)->group(function () {
+        Route::get('/say', 'index');
+        Route::post('/feedback/store', 'store')->name('feedback.store');
     });
 
-    Route::get('/feedback', function () {
-        return view('feedback.list');
-    });
-
-    Route::get('/book', function () {
-        return view('book.list');
-    });
-
-    //
-    Route::get('/evaluate/mental', function () {
-        return view('evaluate.mental');
-    });
-
-    Route::get('/evaluate/physical', function () {
-        return view('evaluate.physical');
-    });
-
-    Route::get('/evaluate/emotional', function () {
-        return view('evaluate.emotional');
-    });
-
-    Route::get('/evaluate/social', function () {
-        return view('evaluate.social');
+    Route::controller(BookingController::class)->group(function () {
+        Route::get('/book', 'index')->name('book');
     });
 
     Route::controller(PhysicalHealthController::class)->group(function () {
@@ -84,6 +66,7 @@ Route::middleware('auth')->group(function () {
     Route::controller(PhysicalHealthEvaluationController::class)->group(function () {
         Route::post('answer', 'store')->name('physical.answer');
         Route::get('physical/score', 'evaluate');
+        Route::get('/evaluate/physical', 'index');
     });
 
     Route::controller(SocialWellbeingController::class)->group(function () {
@@ -97,6 +80,7 @@ Route::middleware('auth')->group(function () {
     Route::controller(SocialWellbeingEvaluationController::class)->group(function () {
         Route::post('social/answer', 'store')->name('social.answer');
         Route::get('social/score', 'evaluate');
+        Route::get('/evaluate/social', 'index');
     });
 
     Route::controller(EmotionalHealthController::class)->group(function () {
@@ -110,6 +94,7 @@ Route::middleware('auth')->group(function () {
     Route::controller(EmotionalHealthEvaluationController::class)->group(function () {
         Route::post('emotional/answer', 'store')->name('emotional.answer');
         Route::get('emotional/score', 'evaluate');
+        Route::get('/evaluate/emotional', 'index');
     });
 
     Route::controller(MentalHealthController::class)->group(function () {
@@ -123,6 +108,7 @@ Route::middleware('auth')->group(function () {
     Route::controller(MentalHealthEvaluationController::class)->group(function () {
         Route::post('mental/answer', 'store')->name('mental.answer');
         Route::get('mental/score', 'evaluate');
+        Route::get('/evaluate/mental', 'index');
     });
 });
 

@@ -11,7 +11,10 @@
            <div class="">
              <p class="mb-1">Physical Health</p>
              <h4 class="mb-0">Assessment</h4>
-             <p class="mb-0 mt-2 font-13"><i class="bi bi-clock"></i><span>Last Visit: April 1, 2022</span></p>
+             <p class="mb-0 mt-2 font-13">
+                <i class="bi bi-clock"></i>
+                <span>Last visit: {{ ($physical == null) ? 'never' : $physical }}</span>
+            </p>
            </div>
            <div class="ms-auto widget-icon text-primary">
              <i class="bi bi-activity"></i>
@@ -30,7 +33,10 @@
            <div class="">
              <p class="mb-1">Overall Health</p>
              <h4 class="mb-0">Assessment</h4>
-             <p class="mb-0 mt-2 font-13"><i class="bi bi-clock"></i><span>Last Visit: April 1, 2022</span></p>
+             <p class="mb-0 mt-2 font-13">
+                <i class="bi bi-clock"></i>
+                <span>Last visit: {{ ($emotional == null) ? 'never' : $emotional }}</span>
+            </p>
            </div>
            <div class="ms-auto widget-icon  text-success">
              <i class="bi bi-emoji-heart-eyes-fill"></i>
@@ -49,7 +55,10 @@
            <div class="">
              <p class="mb-1">Psychological Wellbeing</p>
              <h4 class="mb-0">Assessment</h4>
-             <p class="mb-0 mt-2 font-13"><i class="bi bi-clock"></i><span>Last Visit: April 1, 2022</span></p>
+             <p class="mb-0 mt-2 font-13">
+                <i class="bi bi-clock"></i>
+                <span>Last visit: {{ ($mental == null) ? 'never' : $mental }}</span>
+            </p>
            </div>
            <div class="ms-auto widget-icon text-orange">
              <i class="bi bi-activity"></i>
@@ -68,7 +77,10 @@
            <div class="">
              <p class="mb-1">Social Wellbeing</p>
              <h4 class="mb-0">Assessment</h4>
-             <p class="mb-0 mt-2 font-13"><i class="bi bi-clock"></i><span>Last Visit: April 1, 2022</span></p>
+             <p class="mb-0 mt-2 font-13">
+                <i class="bi bi-clock"></i>
+                <span>Last visit: {{ ($social == null) ? 'never' : $social }}</span>
+            </p>
            </div>
            <div class="ms-auto widget-icon  text-info">
              <i class="bi bi-activity"></i>
@@ -86,22 +98,13 @@
            <div class="card-body">
             <div class="d-flex align-items-center mb-3">
               <h6 class="mb-0">Task Overview</h6>
-              <div class="fs-5 ms-auto dropdown">
-                 <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></div>
-                   <ul class="dropdown-menu">
-                     <li><a class="dropdown-item" href="#">Action</a></li>
-                     <li><a class="dropdown-item" href="#">Another action</a></li>
-                     <li><hr class="dropdown-divider"></li>
-                     <li><a class="dropdown-item" href="#">Something else here</a></li>
-                   </ul>
-               </div>
              </div>
               <div id="chart2"></div>
            </div>
            <ul class="list-group list-group-flush mb-0 shadow-none">
-             <li class="list-group-item bg-transparent border-top"><i class="bi bi-circle-fill me-2 font-weight-bold text-primary"></i> Complete <span class="float-end">120</span></li>
-             <li class="list-group-item bg-transparent"><i class="bi bi-circle-fill me-2 font-weight-bold text-orange"></i> In Progress <span class="float-end">110</span></li>
-             <li class="list-group-item bg-transparent"><i class="bi bi-circle-fill me-2 font-weight-bold text-info"></i> Started <span class="float-end">70</span></li>
+             <li class="list-group-item bg-transparent border-top"><i class="bi bi-circle-fill me-2 font-weight-bold text-primary"></i> Complete <span class="float-end">{{ $total_completed }}</span></li>
+             <li class="list-group-item bg-transparent"><i class="bi bi-circle-fill me-2 font-weight-bold text-orange"></i> Pending <span class="float-end">{{ $total_pending }}</span></li>
+             {{-- <li class="list-group-item bg-transparent"><i class="bi bi-circle-fill me-2 font-weight-bold text-info"></i> Started <span class="float-end">70</span></li> --}}
            </ul>
          </div>
       </div>
@@ -112,5 +115,6 @@
   <script src="{{ asset('media/plugins/chartjs/js/Chart.min.js') }}"></script>
   <script src="{{ asset('media/plugins/chartjs/js/Chart.extension.js') }}"></script>
   <script src="{{ asset('media/plugins/apexcharts-bundle/js/apexcharts.min.js') }}"></script>
-  <script src="{{ asset('media/js/index.js') }}"></script>
+  {{-- <script src="{{ asset('media/js/index.js') }}"></script> --}}
+  <script src="{{ asset('media/js/customjs/home.js') }}"></script>
 @endsection

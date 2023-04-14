@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EmotionalHealthEvaluation;
+use App\Models\MentalHealthEvaluation;
+use App\Models\PhysicalHealthEvaluation;
 use App\Models\SocialWellbeing;
 use App\Models\SocialWellbeingEvaluation;
 use Illuminate\Http\Request;
@@ -12,10 +15,17 @@ class SocialWellbeingController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public $data = [];
+
     public function index()
     {
-        $physical = SocialWellbeing::all();
-        return view('questions.social', ['physical' => $physical]);
+        $this->data['has_physical'] = PhysicalHealthEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_social'] = SocialWellbeingEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_mental'] = MentalHealthEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_emotional'] = EmotionalHealthEvaluation::whereUser_id(Auth::id())->count();
+
+        $this->data['physical'] = SocialWellbeing::all();
+        return view('questions.social', $this->data);
     }
 
     /**
@@ -81,6 +91,11 @@ class SocialWellbeingController extends Controller
 
     public function assessment()
     {
+        $this->data['has_physical'] = PhysicalHealthEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_social'] = SocialWellbeingEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_mental'] = MentalHealthEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_emotional'] = EmotionalHealthEvaluation::whereUser_id(Auth::id())->count();
+
         $questionGrouo = 'social connectedness/integration';
         $isComplete = false;
         $formArr = ['social connectedness/integration', 'autonomy', 'social contribution', 'social acceptance', 'social capital/inclination', 'self-acceptance'];
@@ -113,26 +128,25 @@ class SocialWellbeingController extends Controller
             }
         }
 
-        $data = [];
-        $data['title'] = ucwords($questionGrouo);
+        $this->data['title'] = ucwords($questionGrouo);
 
-        $data['physical'] = $questionGrouo = null ? [] : SocialWellbeing::whereQuestion_group(strtolower($questionGrouo))->get();
+        $this->data['physical'] = $questionGrouo = null ? [] : SocialWellbeing::whereQuestion_group(strtolower($questionGrouo))->get();
 
         if ($isComplete) {
             // get total
             $total = SocialWellbeingEvaluation::whereUser_id(Auth::id())->sum('response');
             if ($total >= 54 && $total <= 180):
-                $data['score'] = $total;
-                $data['msg'] = 'Good Social Wellbeing';
+                $this->data['score'] = $total;
+                $this->data['msg'] = 'Good Social Wellbeing';
             elseif ($total >= 181 && $total <= 360):
-                $data['score'] = $total;
-                $data['msg'] = 'Average Social Wellbeing';
+                $this->data['score'] = $total;
+                $this->data['msg'] = 'Average Social Wellbeing';
             else:
-                $data['score'] = $total;
-                $data['msg'] = 'Poor Social Wellbeing';
+                $this->data['score'] = $total;
+                $this->data['msg'] = 'Poor Social Wellbeing';
             endif;
         }
-        // return response()->json($data, 200);
-        return view('assess.social', $data);
+        // return response()->json($this->data, 200);
+        return view('assess.social', $this->data);
     }
 }

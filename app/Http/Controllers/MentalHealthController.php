@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EmotionalHealthEvaluation;
 use App\Models\MentalHealth;
 use App\Models\MentalHealthEvaluation;
+use App\Models\PhysicalHealthEvaluation;
+use App\Models\SocialWellbeingEvaluation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -12,10 +15,17 @@ class MentalHealthController extends Controller
      /**
      * Display a listing of the resource.
      */
+    public $data = [];
+
     public function index()
     {
-        $physical = MentalHealth::all();
-        return view('questions.social', ['physical' => $physical]);
+        $this->data['has_physical'] = PhysicalHealthEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_social'] = SocialWellbeingEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_mental'] = MentalHealthEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_emotional'] = EmotionalHealthEvaluation::whereUser_id(Auth::id())->count();
+
+        $this->data['physical'] = MentalHealth::all();
+        return view('questions.mental', $this->data);
     }
 
     /**
@@ -81,6 +91,11 @@ class MentalHealthController extends Controller
 
     public function assessment()
     {
+        $this->data['has_physical'] = PhysicalHealthEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_social'] = SocialWellbeingEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_mental'] = MentalHealthEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_emotional'] = EmotionalHealthEvaluation::whereUser_id(Auth::id())->count();
+
         $questionGrouo = 'thoughts';
         $isComplete = false;
         $formArr = ['thoughts', 'feelings', 'somatic'];
@@ -103,26 +118,25 @@ class MentalHealthController extends Controller
             }
         }
 
-        $data = [];
-        $data['title'] = ucwords($questionGrouo);
+        $this->data['title'] = ucwords($questionGrouo);
 
-        $data['physical'] = $questionGrouo = null ? [] : MentalHealth::whereQuestion_group(strtolower($questionGrouo))->get();
+        $this->data['physical'] = $questionGrouo = null ? [] : MentalHealth::whereQuestion_group(strtolower($questionGrouo))->get();
 
         if ($isComplete) {
             // get total
             $total = MentalHealthEvaluation::whereUser_id(Auth::id())->sum('response');
             if ($total >= 1 && $total <= 120):
-                $data['score'] = $total;
-                $data['msg'] = 'Good Psychological Wellbeing';
+                $this->data['score'] = $total;
+                $this->data['msg'] = 'Good Psychological Wellbeing';
             elseif ($total >= 121 && $total <= 130):
-                $data['score'] = $total;
-                $data['msg'] = 'Average Psychological Wellbeing';
+                $this->data['score'] = $total;
+                $this->data['msg'] = 'Average Psychological Wellbeing';
             else:
-                $data['score'] = $total;
-                $data['msg'] = 'Poor Psychological Wellbeing';
+                $this->data['score'] = $total;
+                $this->data['msg'] = 'Poor Psychological Wellbeing';
             endif;
         }
-        // return response()->json($data, 200);
-        return view('assess.mental', $data);
+        // return response()->json($this->data, 200);
+        return view('assess.mental', $this->data);
     }
 }

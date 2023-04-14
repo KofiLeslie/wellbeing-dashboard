@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\EmotionalHealthEvaluation;
+use App\Models\MentalHealthEvaluation;
+use App\Models\PhysicalHealthEvaluation;
+use App\Models\SocialWellbeingEvaluation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +14,18 @@ use Illuminate\Support\Facades\Validator;
 
 class EmotionalHealthEvaluationController extends Controller
 {
+    public $data = [];
+
+    public function index()
+    {
+        $this->data['has_physical'] = PhysicalHealthEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_social'] = SocialWellbeingEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_mental'] = MentalHealthEvaluation::whereUser_id(Auth::id())->count();
+        $this->data['has_emotional'] = EmotionalHealthEvaluation::whereUser_id(Auth::id())->count();
+
+        return view('evaluate.emotional', $this->data);
+    }
+
     public function store(Request $request)
     {
         try {
@@ -50,7 +65,7 @@ class EmotionalHealthEvaluationController extends Controller
 
             return redirect()->back()->with('success', 'Progress saved');
         } catch (\Throwable $e) {
-            return redirect()->back()->with('error', 'Error has ocured');
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 

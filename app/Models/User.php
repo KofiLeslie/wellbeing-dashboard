@@ -44,7 +44,7 @@ class User extends Authenticatable
     ];
 
     protected $guarded = [];
-    
+
     public function mentalHealth()
     {
         return $this->hasMany(MentalHealthEvaluation::class);
@@ -63,5 +63,13 @@ class User extends Authenticatable
     public function socialWellbeing()
     {
         return $this->hasMany(SocialWellbeingEvaluation::class);
+    }
+
+    public function feedback(){
+        return $this->hasMany(Feedback::class);
+    }
+
+    public function booking(){
+        return $this->hasMany(Booking::class);
     }
 }

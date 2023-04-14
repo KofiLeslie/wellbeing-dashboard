@@ -47,8 +47,7 @@
                                                         <label for="qstGroup" class="form-label">Question Group</label>
                                                         <select class="form-control" id="qstGroup" name="qstGroup">
                                                             <option selected disabled>--SELECT GROUP--</option>
-                                                            <option value="thoughts">Social
-                                                                Connectedness/Integration</option>
+                                                            <option value="thoughts">Thoughts</option>
                                                             <option value="feelings">Feelings
                                                             </option>
                                                             <option value="somatic">Somatic</option>

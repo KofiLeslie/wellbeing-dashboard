@@ -83,8 +83,8 @@
                         <div class="d-flex align-items-center">
                            <div class="notification-box bg-light-primary text-primary"><i class="bi bi-basket2-fill"></i></div>
                            <div class="ms-3 flex-grow-1">
-                             <h6 class="mb-0 dropdown-msg-user">New Orders <span class="msg-time float-end text-secondary">1 m</span></h6>
-                             <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">You have recived new orders</small>
+                             <h6 class="mb-0 dropdown-msg-user">New Message <span class="msg-time float-end text-secondary">1 m</span></h6>
+                             <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">You have recived new message</small>
                            </div>
                         </div>
                       </a>
@@ -126,37 +126,14 @@
                        </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="javascript:;">
-                         <div class="d-flex align-items-center">
-                           <div class=""><i class="bi bi-gear-fill"></i></div>
-                           <div class="ms-3"><span>Setting</span></div>
-                         </div>
-                       </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="javascript:;">
+                      <a class="dropdown-item" href="{{ url('/home') }}">
                          <div class="d-flex align-items-center">
                            <div class=""><i class="bi bi-speedometer"></i></div>
                            <div class="ms-3"><span>Dashboard</span></div>
                          </div>
                        </a>
                     </li>
-                    <li>
-                      <a class="dropdown-item" href="javascript:;">
-                         <div class="d-flex align-items-center">
-                           <div class=""><i class="bi bi-piggy-bank-fill"></i></div>
-                           <div class="ms-3"><span>Earnings</span></div>
-                         </div>
-                       </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="javascript:;">
-                         <div class="d-flex align-items-center">
-                           <div class=""><i class="bi bi-cloud-arrow-down-fill"></i></div>
-                           <div class="ms-3"><span>Downloads</span></div>
-                         </div>
-                       </a>
-                    </li>
+
                     <li><hr class="dropdown-divider"></li>
                     <li>
             <a class="dropdown-item" href="{{ route('logout') }}"
@@ -231,6 +208,7 @@
               </ul>
             </li>
 
+            @if ($has_physical > 0 || $has_emotional > 0 || $has_mental > 0 || $has_social > 0)
             {{-- EVALUATION --}}
             <li class="menu-label">Evaluate Your Progress</li>
 
@@ -241,20 +219,34 @@
                 <div class="menu-title">Check Evaluation</div>
               </a>
               <ul>
+
+                @if ($has_physical > 0)
                 <li> <a href="{{ url('/evaluate/physical') }}"><i class="bi bi-circle"></i>Physical Health</a>
                 </li>
-                <li> <a href="{{ url('/evaluate/mental') }}"><i class="bi bi-circle"></i>Mental Health</a>
+                @endif
+
+                @if ($has_emotional > 0)
+                <li> <a href="{{ url('/evaluate/emotional') }}"><i class="bi bi-circle"></i>Overall Health</a>
                 </li>
-                <li> <a href="{{ url('/evaluate/emotional') }}"><i class="bi bi-circle"></i>Emotional Health</a>
+                @endif
+
+                @if ($has_mental > 0)
+                <li> <a href="{{ url('/evaluate/mental') }}"><i class="bi bi-circle"></i>Psychological Wellbeing</a>
                 </li>
+                @endif
+
+                @if ($has_social > 0)
                 <li> <a href="{{ url('/evaluate/social') }}"><i class="bi bi-circle"></i>Social Wellbeing</a>
                 </li>
+                @endif
+
               </ul>
             </li>
+            @endif
 
             {{-- feedback --}}
             <li>
-                <a href="{{ url('/feedback') }}">
+                <a href="{{ url('/say') }}">
                     <div class="parent-icon"><i class="bi bi-chat-quote-fill"></i>
                     </div>
                     <div class="menu-title">Feedback</div>
