@@ -36,10 +36,10 @@ body {
 }
 
 .login-wrapper {
-    width: 300px;
+    /* width: 300px; */
     max-width: 100%;
-    padding-top: 24px;
-    padding-bottom: 24px;
+    /* padding-top: 24px; */
+    /* padding-bottom: 24px; */
 }
 @media (max-width: 575px) {
     .login-wrapper {
