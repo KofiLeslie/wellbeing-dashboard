@@ -21,7 +21,7 @@
           </div>
           <div class="login-wrapper my-auto">
             <h1 class="login-title">Log in</h1>
-            <p class="card-text mb-4">See your growth and get consulting support!</p>
+            <p class="card-text mb-4">How are you? Check your health and get support to improve it</p>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                  <div class="row g-3">
