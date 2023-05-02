@@ -138,12 +138,15 @@ class SocialWellbeingController extends Controller
             if ($total >= 54 && $total <= 180):
                 $this->data['score'] = $total;
                 $this->data['msg'] = 'Good Social Wellbeing';
+                $this->data['essay'] = "Having a good social wellbeing is important to your wellbeing overall. Your Social Wellbeing is good, and we recommend you keep doing the things you have been doing to keep it that way. Our resources have been developed to help you target the areas which may not be as robust as they should be. Pay attention to the areas where you fall below 4 on the chart for improvement with our <a href='#'>resources</a>.<br>Why don’t you book a one to one tailored package to maintain and further improve your Social Wellbeing and develop the areas where you fall short? <a href='". url('book') ."'>Book a package</a> today at Esther’s Place. ";
             elseif ($total >= 181 && $total <= 360):
                 $this->data['score'] = $total;
                 $this->data['msg'] = 'Average Social Wellbeing';
+                $this->data['essay'] = "Your Social Wellbeing is average which means that there are key/important areas of your social wellbeing that require improvement. The chart will tell you the areas of your Social Wellbeing that are below standard. Pay attention to the areas where you fall below 4 on the chart. These are the areas you need to improve. Good social wellbeing is important to your overall health. It affects your mood, behaviour,actions and physical health. It has been linked to depression and loneliness can increase the risk of heart disease and suicide. Access the <a href='#'>resources</a> in the next stage of this app, to improve your Social Wellbeing.<br>You can also book a one to one, tailored programme that will assist you to improve the areas where you fall short. <a href='". url('book') ."'>Book a package</a> today at Esther’s Place.";
             else:
                 $this->data['score'] = $total;
                 $this->data['msg'] = 'Poor Social Wellbeing';
+                $this->data['essay'] = "It seems your Social Wellbeing is poor at the moment. Poor social wellbeing can affect your emotional and psychological health and also affect your physical health. In fact, it has been shown that social isolation is as harmful to your health as smoking 5 packs of cigarettes a day.<br>Our <a href='#'>resources</a> are put together to help you take helpful steps to improve your Social Wellbeing and your associated health. Take time to go through all the resources, and if you need further help, we are available to assist you get your Social Wellbeing back on track with a personalised, tailored and one to one Social Wellbeing improvement programme.<br><a href='". url('book') ."'>Book a package</a> today at Esther’s Place.";
             endif;
         }
         // return response()->json($this->data, 200);

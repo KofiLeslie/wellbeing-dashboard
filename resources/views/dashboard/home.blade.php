@@ -92,7 +92,7 @@
     </div>
 
 </div><!--end row-->
-    <div class="row">
+    {{-- <div class="row">
        <div class="col-12 col-lg-4 col-xl-4 d-flex">
          <div class="card w-100 rounded-4">
            <div class="card-body">
@@ -103,12 +103,12 @@
            </div>
            <ul class="list-group list-group-flush mb-0 shadow-none">
              <li class="list-group-item bg-transparent border-top"><i class="bi bi-circle-fill me-2 font-weight-bold text-primary"></i> Complete <span class="float-end">{{ $total_completed }}</span></li>
-             <li class="list-group-item bg-transparent"><i class="bi bi-circle-fill me-2 font-weight-bold text-orange"></i> Pending <span class="float-end">{{ $total_pending }}</span></li>
+             <li class="list-group-item bg-transparent"><i class="bi bi-circle-fill me-2 font-weight-bold text-orange"></i> Pending <span class="float-end">{{ $total_pending }}</span></li> --}}
              {{-- <li class="list-group-item bg-transparent"><i class="bi bi-circle-fill me-2 font-weight-bold text-info"></i> Started <span class="float-end">70</span></li> --}}
-           </ul>
+           {{-- </ul>
          </div>
       </div>
-    </div>
+    </div> --}}
 @endsection
 
 @section('footerLinks')

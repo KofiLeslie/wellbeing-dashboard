@@ -137,12 +137,15 @@ class PhysicalHealthController extends Controller
             if ($total >= 24 && $total <= 96):
                 $this->data['score'] = $total;
                 $this->data['msg'] = 'Good Physical Health';
+                $this->data['essay'] = "Your physical health is good, we recommend you keep doing the things you have been doing to keep it that way, but prevention is always better than cure. Find a programme that will assist you to maintain your fitness, the right nutrition and the right state of health. Pay attention to the areas where you fall below 4 on the chart to improve.<br>Why don’t you book a one to one tailored preventive package to maintain your good physical health and improve the areas where you fall short? <a href='". url('book') ."'>Book a package</a> today at Esther’s Place. ";
             elseif ($total >= 97 && $total <= 168):
                 $this->data['score'] = $total;
                 $this->data['msg'] = 'Average Physical Health';
+                $this->data['essay'] = "Your physical health is average which means that there are key/important areas of your health that require improvement. The chart will tell you the areas of your physical health that are below standard. Pay attention to the areas where you fall below 4 on the chart. These are the areas you need to improve. Access the <a href='#'>resources</a> in the next stage of this app, to improve your physical health.<br>You can also find a one to one, tailored programme that will assist you to improve the areas where you fall short. <a href='". url('book') ."'>Book a package</a> today at Esther’s Place. ";
             else:
                 $this->data['score'] = $total;
                 $this->data['msg'] = 'Poor Physical Health';
+                $this->data['essay'] = "It seems your physical health is poor at the moment, but do not panic. Our resources are put together to help you take steps to improve your physical health and wellbeing. Take time to go through all the resources, and if you need further help, we are available to assist you get your physical health back on track with a personalised, tailored and one to one physical health improvement programme.<br><a href='". url('book') ."'>Book a package</a> today at Esther’s Place.";
             endif;
         }
         // return response()->json($data, 200);

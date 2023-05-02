@@ -86,17 +86,21 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="text-left">
-                                        <span>Overall Score:</span>
-                                        <strong>{{ $score }}</strong>
+                                        <span>Message: </span>
+                                        <strong>{{ $msg }}</strong>
                                     </h5>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="text-left">
-                                        <span>Message: </span>
-                                        <strong>{{ $msg }}</strong>
-                                    </h5>
+                                    <p class="text-left">{!! $essay !!}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="chart10"></div>
+                                    </div>
                                 </div>
                             </div>
                         @else
@@ -114,5 +118,6 @@
 @endsection
 
 @section('footerLinks')
+<script src="{{ asset('media/plugins/apexcharts-bundle/js/apexcharts.min.js') }}"></script>
     <script src="{{ asset('media/js/customjs/social.js') }}"></script>
 @endsection
